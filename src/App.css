@@ -1,42 +1,114 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  /** colors */
+  --color-black-150: #f1f2f3;
+  --color-black-225: #d6d9dc;
+  --color-black-300: #a7adb4;
+  --color-black-500: #3b4045;
+  --color-black-600: #0c0d0e;
+  --color-orange-500: #e7700d;
+  --color-orange-300: #f6b179;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 13px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.layout-container {
+  border: var(--color-black-225) 1px solid; /** remove border */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+html,
+body,
+.app-container {
+  min-height: 100vh !important;
 }
 
-.card {
-  padding: 2em;
+html,
+body,
+#root,
+.app-container,
+.page-container {
+  height: 100%;
 }
 
-.read-the-docs {
-  color: #888;
+.page-container {
+  display: flex;
+}
+
+#top-nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-top: var(--color-orange-500) 3px solid;
+  border-right: none;
+  border-left: none;
+  padding: 0.25rem 0.5rem;
+}
+
+#top-nav #top-nav-logo {
+  max-width: 150px;
+  transform: translateY(7px); /** to deal with off-balance logo */
+}
+
+#left-nav-container {
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  position: relative;
+  max-width: 200px;
+  min-width: 150px;
+  height: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: var(--color-black-500);
+}
+
+#left-nav-links-container a {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+#left-nav-links-container a:hover {
+  color: var(--color-black-600);
+}
+
+.left-nav-link {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem;
+  fill: var(--color-black-500);
+}
+
+.left-nav-link svg {
+  width: 18px;
+}
+
+.left-nav-link:hover,
+.left-nav-link.selected {
+  background-color: var(--color-black-150);
+  cursor: pointer;
+  color: var(--color-black-600) !important;
+  fill: var(--color-black-600);
+}
+
+.left-nav-link.selected {
+  font-weight: bold;
+  background-color: var(--color-black-225) !important;
+}
+
+#main-content-container {
+  width: 100%;
+  padding: 1rem;
+  padding-top: 1.5rem;
+  border: none;
 }

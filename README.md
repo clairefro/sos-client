@@ -1,4 +1,17 @@
-# React + Vite
+# StackOverflow Simulator - Client
+
+### TODO
+
+- [ ] Navbar and routes (Home, About, 404)
+- [ ] Question Modal
+- [ ] Answer thread
+- [ ] Do something about copyright :P https://policies.stackoverflow.co/company/trademark-guidance/
+- [ ] Mobile responsive
+- [ ] BYO-API Key component
+- [ ] Free trial UI
+- [ ] add attribution to logo component: <a href="https://www.textstudio.com/">Font generator</a>
+
+## Development
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
