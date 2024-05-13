@@ -1,7 +1,15 @@
+import Question from "../components/Question";
+
+const dummyBody = `
+This question has been asked multiple times before. Please make sure to search for similar questions before posting. You can center your div by setting the margin property to auto in CSS.
+`;
+
 function Home() {
   return (
     <>
-      <p>Yo world</p>
+      <div>
+        <Question title="How to center a div?" body={dummyBody} />
+      </div>
     </>
   );
 }
