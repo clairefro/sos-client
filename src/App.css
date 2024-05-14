@@ -8,6 +8,10 @@
   --color-black-600: #0c0d0e;
   --color-orange-500: #e7700d;
   --color-orange-300: #f6b179;
+  --color-blue-400: #1b75d0;
+
+  /** border */
+  --br-m: 6px;
 }
 
 html,
@@ -134,4 +138,55 @@ h1 {
 
 .question-body {
   font-size: 15px;
+}
+
+.sos-button {
+  padding: 10.4px; /* don't ask */
+  border-radius: var(--br-m);
+  border: none;
+  background-color: var(--color-blue-400);
+  color: #ffffff;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-black-600);
+}
+
+/* Adjustments for mobile devices */
+@media (max-width: 768px) {
+  .modal {
+    width: 90%;
+    max-width: 400px;
+  }
 }

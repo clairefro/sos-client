@@ -7,17 +7,23 @@ function QuestionTitleDetail({ label, value }) {
   );
 }
 
+function QuestionDetailsBox() {
+  return (
+    <div className="question-title-details-box">
+      <QuestionTitleDetail label="Asked" value="today" />
+      <QuestionTitleDetail label="Modified" value="today" />
+      <QuestionTitleDetail label="Viewed" value="99 times" />
+    </div>
+  );
+}
+
 function Question({ title, body }) {
   return (
     <>
       <div className="question">
         <div className="question-title-box">
           <h1>{title || "Ask a question"}</h1>
-          <div className="question-title-details-box">
-            <QuestionTitleDetail label="Asked" value="today" />
-            <QuestionTitleDetail label="Modified" value="today" />
-            <QuestionTitleDetail label="Viewed" value="99 times" />
-          </div>
+          <QuestionDetailsBox />
         </div>
         <hr />
         <div className="question-body">
