@@ -6,10 +6,8 @@ export const useGlobalState = () => useContext(GlobalStateContext);
 
 export const GlobalStateProvider = ({ children }) => {
   const [globalState, setGlobalState] = useState({
-    question: "test",
+    question: "",
   });
-
-
 
   return (
     <GlobalStateContext.Provider value={{ globalState, setGlobalState }}>
