@@ -1,25 +1,10 @@
 import { useState } from "react";
 import MarkdownEditor from "react-markdown-editor-lite";
-import hljs from "highlight.js";
-import MarkdownIt from "markdown-it";
 import Button from "../components/blocks/Button";
 import { useGlobalState } from "../context/GlobalState";
+import { mdParser } from "../util/mdParser";
 
 import "react-markdown-editor-lite/lib/index.css";
-
-const mdParser = new MarkdownIt({
-  // TODO: Refactor to util
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return `<pre class="hljs"><code>${
-          hljs.highlight(lang, str, true).value
-        }</code></pre>`;
-      } catch (__) {}
-    }
-    return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
-  },
-});
 
 const AskQuestionButtonForm = ({ closeModal }) => {
   const { setGlobalState } = useGlobalState();

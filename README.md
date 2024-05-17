@@ -2,6 +2,9 @@
 
 ### TODO
 
+Make fully client side with BYO-API Key, direct to openai?
+
+- [ ] Auto generate question title based on question content
 - [ ] Navbar and routes (Home, About, 404)
 - [ ] Question Modal
 - [ ] Answer thread
