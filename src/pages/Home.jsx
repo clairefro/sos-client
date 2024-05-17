@@ -1,36 +1,34 @@
 import { useEffect, useState } from "react";
 import Question from "../components/Question";
 import Answer from "../components/Answer";
-import AskQuestionButton from "../components/AskQuestionButton";
-import { useGlobalState } from "../context/GlobalState";
-import { getSosAnswerThread } from "../util/sosApi";
+import { getSosResponse } from "../util/sosApi";
+import AskQuestionForm from "../components/AskQuestionForm";
+import AnswerThread from "../components/AnswerThread";
 
 const dummyBody = `
 This question has been asked multiple times before. Please make sure to search for similar questions before posting. You can center your div by setting the margin property to auto in CSS.
 `;
 
 function Home() {
+  const [question, setQuestion] = useState("");
+  const [questionTitle, setQuestionTitle] = useState("");
   const [answers, setAnswers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const { globalState } = useGlobalState();
-  const { question } = globalState;
 
   useEffect(() => {
     const fetchData = async () => {
       if (!!question) {
         try {
           if (!!question) {
-            setIsLoading(true);
+            // setIsLoading(true);
             setAnswers([]);
-            const res = await getSosAnswerThread(question);
-            console.log("yoooooo");
-            console.log(res.answers);
+            const res = await getSosResponse(question);
             setAnswers(res.answers);
+            setQuestionTitle(res.questionTitle);
           }
         } catch (error) {
           console.error("Error fetching data:", error);
         } finally {
-          setIsLoading(false);
+          // setIsLoading(false);
         }
       }
     };
@@ -38,20 +36,16 @@ function Home() {
     fetchData();
   }, [question]);
 
+  const handleAskQuestion = (q) => {
+    setQuestion(q);
+  };
+
   return (
     <>
       <div>
-        <AskQuestionButton />
-        <Question title="How to center a div?" body={question} />
-        {isLoading && <p>LOADING</p>}
-
-        <ul>
-          {answers.map((a, i) => (
-            <li key={i}>
-              <Answer content={a.content} username={a.username} />
-            </li>
-          ))}
-        </ul>
+        <AskQuestionForm handleAskQuestion={handleAskQuestion} />
+        {question && <Question title={questionTitle} body={question} />}
+        {question && <AnswerThread answers={answers} />}
       </div>
     </>
   );

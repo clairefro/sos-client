@@ -1,3 +1,5 @@
+import ThreeDotsLoader from "./loaders/ThreeDotsLoader";
+
 function QuestionTitleDetail({ label, value }) {
   return (
     <span>
@@ -12,7 +14,10 @@ function QuestionDetailsBox() {
     <div className="question-title-details-box">
       <QuestionTitleDetail label="Asked" value="today" />
       <QuestionTitleDetail label="Modified" value="today" />
-      <QuestionTitleDetail label="Viewed" value="99 times" />
+      <QuestionTitleDetail
+        label="Viewed"
+        value={`${Math.floor(Math.random() * 1000) + 1} times`}
+      />
     </div>
   );
 }
@@ -22,7 +27,7 @@ function Question({ title, body }) {
     <>
       <div className="question">
         <div className="question-title-box">
-          <h1>{title || "Ask a question"}</h1>
+          {title ? <h1> {title} </h1> : <ThreeDotsLoader />}
           <QuestionDetailsBox />
         </div>
         <hr />

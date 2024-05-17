@@ -3,7 +3,7 @@ import config from '../config';
 
 const URL = `${config.SOS_API_BASE_URL}/generate`
 
-async function getSosAnswerThread(question) {
+async function getSosResponse(question) {
     const data = { question }
 
 
@@ -17,5 +17,5 @@ async function getSosAnswerThread(question) {
 }
 
 export {
-    getSosAnswerThread
+    getSosResponse
 };
