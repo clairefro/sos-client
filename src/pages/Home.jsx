@@ -18,7 +18,17 @@ function Home() {
           if (!!question) {
             setAnswers([]);
             const res = await getSosResponse(question);
-            setAnswers(res.answers);
+            // TODO: VALIDATE THAT RESPONSE IS VALID
+            const sortedAnswers = res.answers.sort((a, b) => {
+              if (a.isBest === b.isBest) {
+                return 0;
+              }
+              if (a.isBest === true) {
+                return -1;
+              }
+              return 1;
+            });
+            setAnswers(sortedAnswers);
             setQuestionTitle(res.questionTitle);
           }
         } catch (error) {
@@ -35,6 +45,7 @@ function Home() {
     setQuestionTitle("");
     setAnswers([]);
   };
+
   const handleAskQuestion = (q) => {
     reset();
     setQuestion(q);

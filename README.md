@@ -4,14 +4,11 @@
 
 Make fully client side with BYO-API Key, direct to openai?
 
-- [ ] Auto generate question title based on question content
-- [ ] Navbar and routes (Home, About, 404)
-- [ ] Question Modal
-- [ ] Answer thread
+- [ ] Mobile responsiveness
+- [ ] add multi-modal support (images)
 - [ ] Do something about copyright :P https://policies.stackoverflow.co/company/trademark-guidance/
-- [ ] Mobile responsive
 - [ ] BYO-API Key component
-- [ ] Free trial UI
+- [ ] how are you going to pay for hosting this :/
 - [ ] add attribution to logo component: <a href="https://www.textstudio.com/">Font generator</a>
 
 ## Development

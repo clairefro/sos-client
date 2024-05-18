@@ -1,8 +1,9 @@
 import { useState } from "react";
 import SVG from "react-inlinesvg";
+import { randomInt } from "../util/randomInt";
 
-function VoteControls() {
-  const [votes, setVotes] = useState(Math.floor(Math.random() * 5001));
+function VoteControls({ defaultVotes }) {
+  const [votes, setVotes] = useState(defaultVotes || randomInt(0, 500));
 
   const handleUpvote = () => {
     setVotes((v) => v + 1);

@@ -8,7 +8,11 @@ function AnswerThread({ answers }) {
         <ul>
           {answers.map((a, i) => (
             <li key={i}>
-              <Answer content={a.content} username={a.username} />
+              <Answer
+                content={a.content}
+                isBest={a.isBest}
+                username={a.username}
+              />
             </li>
           ))}
         </ul>

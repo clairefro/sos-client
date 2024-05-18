@@ -28,6 +28,15 @@ body {
   color: var(--color-black-500);
 }
 
+a {
+  color: var(--color-blue-400);
+}
+
+blockquote {
+  border-left: 2px solid var(--color-black-300);
+  padding-left: 1rem;
+}
+
 .layout-container {
   border: var(--color-black-225) 1px solid; /** remove border */
 }
