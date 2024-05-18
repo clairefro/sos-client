@@ -172,6 +172,7 @@ h1 {
 .answer-thread h2 {
   font-weight: normal;
   font-size: 19px;
+  width: 100%;
 }
 
 .answer-thread ul {

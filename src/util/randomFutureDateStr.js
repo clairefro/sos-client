@@ -1,7 +1,7 @@
 function randomFutureDateStr() {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    const currentDate = new Date(); // Get current date
+    const currentDate = new Date();
     const randomFutureDate = new Date(currentDate.getTime() + Math.floor(Math.random() * 365) * 24 * 60 * 60 * 1000); // Add random number of milliseconds to current date
 
     const randomMonth = months[randomFutureDate.getMonth()];
