@@ -1,13 +1,10 @@
 import { mdParser } from "../util/mdParser";
+import ContentBox from "./ContentBox";
 
 function Answer({ content, username }) {
   return (
     <div className="answer">
-      <div
-        className="answer-content"
-        dangerouslySetInnerHTML={{ __html: mdParser.render(content) }}
-      />
-      <p>- {username}</p>
+      <ContentBox body={content} username={username} />
     </div>
   );
 }

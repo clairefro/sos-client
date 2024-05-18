@@ -23,7 +23,7 @@ body {
   height: 100%;
   width: 100%;
   font-family: sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-black-500);
 }
 
@@ -71,6 +71,7 @@ h1 {
 }
 
 #left-nav-container {
+  font-size: 13px;
   border-top: none;
   border-bottom: none;
   border-left: none;
@@ -131,6 +132,7 @@ h1 {
 .question-title-details-box {
   display: flex;
   gap: 1.25rem;
+  font-size: 13px;
 }
 
 .question-detail-label {
@@ -156,6 +158,12 @@ h1 {
 .answer-thread h2 {
   font-weight: normal;
   font-size: 19px;
+}
+
+.answer-thread ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Collapsable component*/
@@ -193,24 +201,30 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.question-btf {
+.content-box-btf {
   padding-right: 1rem;
 }
 
-.question-footer {
+.content-box-footer {
+  font-size: 13px;
   display: flex;
   justify-content: space-between;
   padding: 2rem 0;
 }
 
-.question-footer-controls {
+.content-box-footer-controls {
   color: var(--color-black-400);
 }
 
-.question-footer-userinfo {
+.content-box-footer-userinfo {
   padding: 0.5rem;
   border-radius: var(--br-m);
   background-color: var(--color-blue-200);
+}
+
+/* Mardown rendering tweaks */
+pre.hljs {
+  font-size: 13px;
 }
 
 /* Adjustments for mobile devices */
