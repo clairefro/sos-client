@@ -1,4 +1,5 @@
 import ThreeDotsLoader from "./loaders/ThreeDotsLoader";
+import { mdParser } from "../util/mdParser";
 
 function QuestionTitleDetail({ label, value }) {
   return (
@@ -31,9 +32,10 @@ function Question({ title, body }) {
           <QuestionDetailsBox />
         </div>
         <hr />
-        <div className="question-body">
-          <p>{body}</p>
-        </div>
+        <div
+          className="question-body"
+          dangerouslySetInnerHTML={{ __html: mdParser.render(body) }}
+        ></div>
       </div>
     </>
   );

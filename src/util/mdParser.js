@@ -2,15 +2,14 @@ import hljs from "highlight.js";
 import MarkdownIt from "markdown-it";
 
 const mdParser = new MarkdownIt({
-    // TODO: Refactor to util
-    highlight: function (str, lang) {
-        if (lang && hljs.getLanguage(lang)) {
+    highlight: function (code, language) {
+        if (language && hljs.getLanguage(language)) {
             try {
-                return `<pre class="hljs"><code>${hljs.highlight(lang, str, true).value
+                return `<pre class="hljs"><code>${hljs.highlight(code, { language, ignoreIllegals: true }).value
                     }</code></pre>`;
             } catch (__) { }
         }
-        return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
+        return `<pre class="hljs"><code>${md.utils.escapeHtml(code)}</code></pre>`;
     },
 });
 

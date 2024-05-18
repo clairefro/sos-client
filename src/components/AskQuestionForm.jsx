@@ -24,8 +24,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
 
   return (
     <form id="ask-question-form" onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="questionMarkdownEditor">Enter your question</label>
+      <div id="ask-question-form-editor">
         <MarkdownEditor
           id="question-markdown-editor"
           name="questionMarkdownEditor"
