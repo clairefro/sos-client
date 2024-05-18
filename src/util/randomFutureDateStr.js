@@ -1,4 +1,4 @@
-function randomFutureDateString() {
+function randomFutureDateStr() {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const currentDate = new Date(); // Get current date
@@ -15,4 +15,4 @@ function randomFutureDateString() {
     return dateString;
 }
 
-export { randomFutureDateString as randomDateString }
+export { randomFutureDateStr }
