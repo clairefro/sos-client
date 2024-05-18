@@ -350,6 +350,15 @@ pre.hljs {
   max-height: 350px;
   overflow: auto;
 }
+pre code {
+  background-color: transparent;
+}
+code {
+  background-color: var(--color-black-225);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
 
 /* Adjustments for mobile devices */
 @media (max-width: 768px) {
