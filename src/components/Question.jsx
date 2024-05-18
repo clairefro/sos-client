@@ -33,7 +33,9 @@ function Question({ title, body }) {
           {hasResponse && <QuestionDetailsBox />}
         </div>
         <hr />
-        {hasResponse && <ContentBox username="you" body={body} />}
+        {hasResponse && (
+          <ContentBox username="you" body={body} isQuestion={true} />
+        )}
       </div>
     </>
   );

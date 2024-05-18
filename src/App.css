@@ -9,11 +9,13 @@
   --color-orange-200: #fbdbc1;
   --color-orange-300: #f6b179;
   --color-orange-500: #e7700d;
+  --color-blue-100: #edf5fd;
   --color-blue-200: #d6e8fa;
   --color-blue-400: #1b75d0;
 
   /** border */
   --br-m: 6px;
+  --br-s: 3px;
 }
 
 html,
@@ -244,10 +246,64 @@ h1 {
 
 .content-box-footer-userinfo {
   padding: 0.5rem;
-  border-radius: var(--br-m);
-  background-color: var(--color-blue-200);
+  border-radius: var(--br-s);
+  /* background-color: var(--color-blue-100); */
+  min-width: 200px;
+  line-height: 1.2rem;
 }
 
+.content-box-footer-userinfo-timestamp {
+  font-size: 12px;
+  color: var(--color-black-400);
+}
+
+.content-box-footer-userinfo-bottom {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.content-box-footer-userinfo-username {
+  color: var(--color-blue-400);
+}
+
+.content-box-footer-userinfo-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-box-footer-userinfo-userstats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-black-400);
+  font-size: 12px;
+}
+
+.content-box-footer-userinfo-img {
+  width: 32px;
+}
+
+.user-stat::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 24 24"><circle cx="12" cy="12" r="10" fill="black"/></svg>')
+    no-repeat;
+  margin-right: 5px;
+}
+
+.user-stat.gold::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 24 24"><circle cx="12" cy="12" r="10" fill="gold"/></svg>');
+}
+
+.user-stat.silver::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 24 24"><circle cx="12" cy="12" r="10" fill="silver"/></svg>');
+}
+
+.user-stat.bronze::before {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 24 24"><circle cx="12" cy="12" r="10" fill="peru"/></svg>');
+}
 .vote-controls {
   display: flex;
   flex-direction: column;
@@ -291,6 +347,8 @@ pre.hljs {
   width: 100%;
   padding: 0.75rem;
   line-height: 1.1rem;
+  max-height: 350px;
+  overflow: auto;
 }
 
 /* Adjustments for mobile devices */
