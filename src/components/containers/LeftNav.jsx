@@ -10,7 +10,7 @@ function LeftNavLink({ to, text, svgIconPath }) {
       to={to}
       className={`left-nav-link ${currentPath === to ? "selected" : ""}`}
     >
-      <SVG src={svgIconPath} height="auto" title={text}></SVG>
+      <SVG src={svgIconPath} title={text}></SVG>
       {text}
     </Link>
   );

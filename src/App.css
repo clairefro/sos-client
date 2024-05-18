@@ -6,8 +6,9 @@
   --color-black-400: #636b74;
   --color-black-500: #3b4045;
   --color-black-600: #0c0d0e;
-  --color-orange-500: #e7700d;
+  --color-orange-200: #fbdbc1;
   --color-orange-300: #f6b179;
+  --color-orange-500: #e7700d;
   --color-blue-200: #d6e8fa;
   --color-blue-400: #1b75d0;
 
@@ -153,6 +154,7 @@ h1 {
   border: none;
   background-color: var(--color-blue-400);
   color: #ffffff;
+  cursor: pointer;
 }
 
 .answer-thread h2 {
@@ -201,8 +203,23 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.content-box-btf {
+.content-box {
   padding-right: 1rem;
+}
+
+.content-box-vote {
+  display: flex;
+  gap: 1rem;
+}
+.content-box-main {
+  flex-grow: 1;
+}
+
+.content-box-body {
+  line-height: 1.5rem;
+}
+.content-box-body p {
+  margin-top: 0;
 }
 
 .content-box-footer {
@@ -222,9 +239,49 @@ h1 {
   background-color: var(--color-blue-200);
 }
 
+.vote-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.vote-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-color: var(--color-black-225);
+  box-shadow: none;
+  border-style: solid;
+  background-color: transparent;
+  border-width: 1px;
+}
+
+.vote-button:hover {
+  background-color: var(--color-orange-200);
+  cursor: pointer;
+}
+
+.vote-button svg {
+  width: 18px;
+  fill: var(--color-black-600);
+}
+
+.vote-display {
+  text-align: center;
+  margin: 0.5rem 0;
+  font-weight: bold;
+  font-size: 19px;
+  color: var(--color-black-600);
+}
+
 /* Mardown rendering tweaks */
 pre.hljs {
   font-size: 13px;
+  width: 100%;
+  padding: 0.75rem;
+  line-height: 1.1rem;
 }
 
 /* Adjustments for mobile devices */

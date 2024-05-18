@@ -22,6 +22,7 @@ function Home() {
             setQuestionTitle(res.questionTitle);
           }
         } catch (error) {
+          // TODO: HANDLE THIS
           console.error("Error fetching data:", error);
         }
       }

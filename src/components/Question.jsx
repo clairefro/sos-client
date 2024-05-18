@@ -24,15 +24,16 @@ function QuestionDetailsBox() {
 }
 
 function Question({ title, body }) {
+  const hasResponse = !!title;
   return (
     <>
       <div className="question">
         <div className="question-title-box">
-          {title ? <h1> {title} </h1> : <ThreeDotsLoader />}
-          <QuestionDetailsBox />
+          {hasResponse ? <h1> {title} </h1> : <ThreeDotsLoader />}
+          {hasResponse && <QuestionDetailsBox />}
         </div>
         <hr />
-        <ContentBox username="you" body={body} />
+        {hasResponse && <ContentBox username="you" body={body} />}
       </div>
     </>
   );
