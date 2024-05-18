@@ -32,10 +32,16 @@ function Question({ title, body }) {
           <QuestionDetailsBox />
         </div>
         <hr />
-        <div
-          className="question-body"
-          dangerouslySetInnerHTML={{ __html: mdParser.render(body) }}
-        ></div>
+        <div className="question-btf">
+          <div
+            className="question-body"
+            dangerouslySetInnerHTML={{ __html: mdParser.render(body) }}
+          ></div>
+          <div className="question-footer">
+            <div className="question-footer-controls">Share</div>
+            <div className="question-footer-userinfo">TODO</div>
+          </div>
+        </div>
       </div>
     </>
   );

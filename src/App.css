@@ -8,6 +8,7 @@
   --color-black-600: #0c0d0e;
   --color-orange-500: #e7700d;
   --color-orange-300: #f6b179;
+  --color-blue-200: #d6e8fa;
   --color-blue-400: #1b75d0;
 
   /** border */
@@ -123,6 +124,10 @@ h1 {
   padding-top: 1.5rem;
   border: none;
 }
+
+.question {
+  margin-bottom: 2rem;
+}
 .question-title-details-box {
   display: flex;
   gap: 1.25rem;
@@ -146,6 +151,11 @@ h1 {
   border: none;
   background-color: var(--color-blue-400);
   color: #ffffff;
+}
+
+.answer-thread h2 {
+  font-weight: normal;
+  font-size: 19px;
 }
 
 /* Collapsable component*/
@@ -181,6 +191,26 @@ h1 {
 
 #ask-question-form-editor {
   margin-bottom: 0.5rem;
+}
+
+.question-btf {
+  padding-right: 1rem;
+}
+
+.question-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+
+.question-footer-controls {
+  color: var(--color-black-400);
+}
+
+.question-footer-userinfo {
+  padding: 0.5rem;
+  border-radius: var(--br-m);
+  background-color: var(--color-blue-200);
 }
 
 /* Adjustments for mobile devices */
