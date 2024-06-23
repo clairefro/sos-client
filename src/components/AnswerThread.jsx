@@ -1,6 +1,6 @@
 import Answer from "./Answer";
 import ThreadLoader from "./loaders/ThreadLoader";
-function AnswerThread({ answers }) {
+function AnswerThread({ answers, responseCost, questionCost }) {
   const Answers = () => {
     return (
       <div>
@@ -16,6 +16,10 @@ function AnswerThread({ answers }) {
             </li>
           ))}
         </ul>
+        <span className="cost-notice">
+          Question and answers costed Claire{" "}
+          <strong>${(responseCost + questionCost).toFixed(5)}</strong>
+        </span>
       </div>
     );
   };

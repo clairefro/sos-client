@@ -169,6 +169,9 @@ h1 {
   cursor: pointer;
 }
 
+.answer-thread {
+  padding-bottom: 2rem;
+}
 .answer-thread h2 {
   font-weight: normal;
   font-size: 19px;
@@ -341,6 +344,16 @@ h1 {
   font-weight: bold;
   font-size: 19px;
   color: var(--color-black-600);
+}
+
+.cost-notice {
+  display: block;
+  padding: 0.5rem;
+  background-color: var(--color-orange-200);
+  border-radius: var(--br-m);
+  font-style: italic;
+  margin-bottom: 1rem;
+  font-size: 13px;
 }
 
 /* Mardown rendering tweaks */
