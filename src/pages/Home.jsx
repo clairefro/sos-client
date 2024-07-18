@@ -79,7 +79,7 @@ function Home() {
     <>
       <div id="main-content">
         <Collapsible
-          title={isOpen ? "" : "Ask a coding question"}
+          title="Ask a coding question"
           isOpen={isOpen}
           setIsOpen={setIsOpen}
         >
