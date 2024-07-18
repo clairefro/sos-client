@@ -1,6 +1,12 @@
 import { useRef } from "react";
 
-const Collapsible = ({ title, isOpen, setIsOpen, children }) => {
+const Collapsible = ({
+  title,
+  isOpen,
+  setIsOpen,
+  hideTitleOnOpen = false,
+  children,
+}) => {
   const contentRef = useRef(null);
 
   const toggleCollapse = () => {
@@ -10,7 +16,7 @@ const Collapsible = ({ title, isOpen, setIsOpen, children }) => {
   return (
     <div className="collapsible">
       <button className="collapsible-header" onClick={toggleCollapse}>
-        <span>{isOpen ? "" : title}</span>
+        <span>{hideTitleOnOpen ? (isOpen ? "" : title) : title}</span>
         <span>{isOpen ? "▲" : "▼"} </span>
       </button>
       <div

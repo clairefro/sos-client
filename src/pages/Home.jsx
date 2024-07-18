@@ -82,6 +82,7 @@ function Home() {
           title="Ask a coding question"
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          hideTitleOnOpen={true}
         >
           <AskQuestionForm handleAskQuestion={handleAskQuestion} />
         </Collapsible>
