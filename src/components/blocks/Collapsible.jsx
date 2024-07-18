@@ -17,7 +17,7 @@ const Collapsible = ({ title, isOpen, setIsOpen, children }) => {
         className={`collapsible-content ${isOpen ? "open" : ""}`}
         ref={contentRef}
         style={{
-          maxHeight: `${isOpen ? "500px" : "0px"}`,
+          maxHeight: `${isOpen ? "600px" : "0px"}`,
           overflow: "hidden",
           transition: "max-height 0.3s ease-out",
         }}

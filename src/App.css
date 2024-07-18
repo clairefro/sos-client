@@ -217,6 +217,7 @@ h1 {
 
 #ask-question-form-editor {
   margin-bottom: 0.5rem;
+  max-height: 550px;
 }
 
 .content-box {
