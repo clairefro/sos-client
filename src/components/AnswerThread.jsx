@@ -1,6 +1,10 @@
+import { useGlobalState } from "../context/GlobalState";
 import Answer from "./Answer";
 import ThreadLoader from "./loaders/ThreadLoader";
-function AnswerThread({ answers, responseCost, questionCost }) {
+
+function AnswerThread({ answers }) {
+  const { responseCost, questionCost } = useGlobalState();
+
   const Answers = () => {
     return (
       <div>

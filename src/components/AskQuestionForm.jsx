@@ -5,11 +5,15 @@ import { mdParser } from "../util/mdParser";
 import { delay } from "../util/delay";
 import { calculateContextUsage } from "../util/calculateOpenAiUsage";
 
-import "react-markdown-editor-lite/lib/index.css";
 import { usageStorage } from "../util/usageStorage";
 import { currentDateStamp } from "../util/currentDatestamp";
+import { useGlobalState } from "../context/GlobalState";
 
-const AskQuestionForm = ({ handleAskQuestion, setQuestionCost }) => {
+import "react-markdown-editor-lite/lib/index.css";
+
+const AskQuestionForm = ({ handleAskQuestion }) => {
+  const { setQuestionCost } = useGlobalState();
+
   const initUsd = calculateContextUsage("").usedUSD;
 
   const [q, setQ] = useState("");

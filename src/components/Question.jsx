@@ -1,5 +1,6 @@
 import ThreeDotsLoader from "./loaders/ThreeDotsLoader";
 import ContentBox from "./ContentBox";
+import { randomInt } from "../util/randomInt";
 
 function QuestionTitleDetail({ label, value }) {
   return (
@@ -17,7 +18,7 @@ function QuestionDetailsBox() {
       <QuestionTitleDetail label="Modified" value="today" />
       <QuestionTitleDetail
         label="Viewed"
-        value={`${Math.floor(Math.random() * 1000) + 1} times`}
+        value={`${randomInt(0, 1000)} times`}
       />
     </div>
   );

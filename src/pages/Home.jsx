@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useGlobalState } from "../context/GlobalState";
 import Question from "../components/Question";
 import { getSosResponse } from "../util/sosApi";
 import AskQuestionForm from "../components/AskQuestionForm";
@@ -8,18 +9,22 @@ import { usageStorage } from "../util/usageStorage";
 import { calculateResponseUsage } from "../util/calculateOpenAiUsage";
 
 function Home() {
-  const [question, setQuestion] = useState("");
-  const [questionTitle, setQuestionTitle] = useState("");
-  const [answers, setAnswers] = useState([]);
+  const {
+    question,
+    setQuestion,
+    answers,
+    setAnswers,
+    questionTitle,
+    setQuestionTitle,
+    setResponseCost,
+  } = useGlobalState();
   const [isOpen, setIsOpen] = useState(true);
-  const [questionCost, setQuestionCost] = useState(0);
-  const [responseCost, setResponseCost] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!!question) {
+      if (question) {
         try {
-          if (!!question) {
+          if (question) {
             setAnswers([]);
             const res = await getSosResponse(question);
 
@@ -45,7 +50,7 @@ function Home() {
             setQuestionTitle(res.questionTitle);
           }
         } catch (error) {
-          // TODO: HANDLE THIS
+          // TODO: HANDLE
           console.error("Error fetching data:", error);
         }
       }
@@ -74,24 +79,15 @@ function Home() {
     <>
       <div id="main-content">
         <Collapsible
-          title="Ask a coding question"
+          title={isOpen ? "" : "Ask a coding question"}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
         >
-          <AskQuestionForm
-            handleAskQuestion={handleAskQuestion}
-            setQuestionCost={setQuestionCost}
-          />
+          <AskQuestionForm handleAskQuestion={handleAskQuestion} />
         </Collapsible>
 
         {question && <Question title={questionTitle} body={question} />}
-        {question && (
-          <AnswerThread
-            answers={answers}
-            responseCost={responseCost}
-            questionCost={questionCost}
-          />
-        )}
+        {question && <AnswerThread answers={answers} />}
       </div>
     </>
   );
