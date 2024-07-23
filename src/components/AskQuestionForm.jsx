@@ -38,7 +38,6 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
     usageStorage.addCallDate(currentDateStamp());
     usageStorage.addCost(usedUsd);
 
-    setQ("");
     delay(100).then(() => {
       setUsedUsd(initUsd);
     });

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useGlobalState } from "../context/GlobalState";
 import Question from "../components/Question";
 import { getSosResponse } from "../util/sosApi";
@@ -21,10 +21,24 @@ function Home() {
     setResponseCost,
   } = useGlobalState();
   const [isOpen, setIsOpen] = useState(true);
+  const [showResponse, setShowResponse] = useState(false);
+
+  const reset = useCallback(() => {
+    setQuestionTitle("");
+    setAnswers([]);
+  }, [setQuestionTitle, setAnswers]);
+
+  const handleAskQuestion = (q) => {
+    reset();
+    setQuestion(q);
+
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       if (question) {
+        setShowResponse(true);
         try {
           if (question) {
             setAnswers([]);
@@ -38,7 +52,6 @@ function Home() {
             setResponseCost(cost);
             usageStorage.addCost(cost);
 
-            // TODO: VALIDATE RESPONSE
             const sortedAnswers = res.answers.sort((a, b) => {
               if (a.isBest === b.isBest) {
                 return 0;
@@ -52,30 +65,30 @@ function Home() {
             setQuestionTitle(res.questionTitle);
           }
         } catch (error) {
-          // TODO: HANDLE
+          setIsOpen(true);
+          console.log(error.response.data.message);
+
+          alert(error.response.data.message || error.message);
+          reset();
+          setShowResponse(false);
           console.error("Error fetching data:", error);
         }
       }
     };
 
     fetchData();
-  }, [question]);
+  }, [
+    question,
+    /* won't change: */
+    setAnswers,
+    setQuestionTitle,
+    setResponseCost,
+    reset,
+  ]);
 
   useEffect(() => {
     usageStorage.initializeObject();
   }, []);
-
-  const reset = () => {
-    setQuestionTitle("");
-    setAnswers([]);
-  };
-
-  const handleAskQuestion = (q) => {
-    reset();
-    setQuestion(q);
-
-    setIsOpen(false);
-  };
 
   return (
     <>
@@ -89,8 +102,8 @@ function Home() {
           <AskQuestionForm handleAskQuestion={handleAskQuestion} />
         </Collapsible>
 
-        {question && <Question title={questionTitle} body={question} />}
-        {question && <AnswerThread answers={answers} />}
+        {showResponse && <Question title={questionTitle} body={question} />}
+        {showResponse && <AnswerThread answers={answers} />}
         <ExpandableTab title="Usage">
           <UsageStats />
         </ExpandableTab>
