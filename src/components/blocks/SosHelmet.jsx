@@ -7,8 +7,7 @@ const SosHelmet = ({ title, subtitle, description }) => {
   const resolvedSubtitle = subtitle ? " | " + subtitle : "";
   const resolvedTitle =
     (title || "Stack Overflow Simulator") + resolvedSubtitle;
-  const resolvedDescription =
-    description || "A functional museum for devs to debug";
+  const resolvedDescription = description || "A functional museum for devs";
 
   return (
     <Helmet>
