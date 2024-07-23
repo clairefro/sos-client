@@ -7,6 +7,8 @@ import AnswerThread from "../components/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
 import { usageStorage } from "../util/usageStorage";
 import { calculateResponseUsage } from "../util/calculateOpenAiUsage";
+import ExpandableTab from "../components/blocks/ExpandableTab";
+import UsageStats from "../components/UsageStats";
 
 function Home() {
   const {
@@ -89,6 +91,9 @@ function Home() {
 
         {question && <Question title={questionTitle} body={question} />}
         {question && <AnswerThread answers={answers} />}
+        <ExpandableTab title="Usage">
+          <UsageStats />
+        </ExpandableTab>
       </div>
     </>
   );
