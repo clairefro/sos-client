@@ -169,6 +169,21 @@ h1 {
   background-color: var(--color-blue-400);
   color: #ffffff;
   cursor: pointer;
+  border: var(--color-blue-400) 2px solid;
+}
+
+.sos-button-secondary {
+  background-color: transparent !important;
+  color: var(--color-blue-400);
+}
+
+.hidden {
+  display: none;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .answer-thread {

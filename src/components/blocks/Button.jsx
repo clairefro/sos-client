@@ -1,6 +1,7 @@
 function Button({ children, ...rest }) {
+  const className = { rest };
   return (
-    <button className="sos-button" {...rest}>
+    <button className={`sos-button ${className}`} {...rest}>
       {children}
     </button>
   );

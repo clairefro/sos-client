@@ -37,6 +37,7 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log({ question });
       if (question) {
         setShowResponse(true);
         try {
@@ -66,17 +67,18 @@ function Home() {
           }
         } catch (error) {
           setIsOpen(true);
-          console.log(error.response.data.message);
 
+          console.log(error.response.data.message);
           alert(error.response.data.message || error.message);
+
           reset();
           setShowResponse(false);
-          console.error("Error fetching data:", error);
         }
       }
     };
 
     fetchData();
+    return () => {};
   }, [
     question,
     /* won't change: */

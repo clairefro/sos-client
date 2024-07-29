@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MarkdownEditor from "react-markdown-editor-lite";
 import Button from "./blocks/Button";
+import ButtonSecondary from "./blocks/ButtonSecondary";
 import { mdParser } from "../util/mdParser";
 import { delay } from "../util/delay";
 import { calculateContextUsage } from "../util/calculateOpenAiUsage";
@@ -25,24 +26,35 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
     setQ(text);
 
     /** calculate context token usage */
+    displayUsage(text);
+  };
+
+  const displayUsage = (text) => {
     const usage = calculateContextUsage(text);
     setUsedUsd(usage.usedUSD);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (q) {
+      handleAskQuestion(q);
 
-    handleAskQuestion(q);
+      // add cost and call to usage storage
+      usageStorage.addCallDate(currentDateStamp());
+      usageStorage.addCost(usedUsd);
 
-    // add cost and call to usage storage
-    usageStorage.addCallDate(currentDateStamp());
-    usageStorage.addCost(usedUsd);
+      delay(100).then(() => {
+        setUsedUsd(initUsd);
+      });
+      // parent
+      setQuestionCost(usedUsd);
+    }
+  };
 
-    delay(100).then(() => {
-      setUsedUsd(initUsd);
-    });
-    // parent
-    setQuestionCost(usedUsd);
+  const handleClear = () => {
+    const updatedQ = "";
+    setQ(updatedQ);
+    displayUsage(updatedQ);
   };
 
   useEffect(() => {
@@ -65,7 +77,16 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
       <span className="cost-notice">
         Question will cost Claire <strong> ${usedUsd.toFixed(5)}</strong>
       </span>
-      <Button type="submit">Ask Question</Button>
+      <Button type="submit" disabled={!q}>
+        Ask Question
+      </Button>
+      <ButtonSecondary
+        onClick={handleClear}
+        className={q ? "" : "hidden"}
+        style={{ marginLeft: "0.5rem" }}
+      >
+        Clear
+      </ButtonSecondary>
     </form>
   );
 };
