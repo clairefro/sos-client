@@ -21,6 +21,7 @@ function Home() {
     setResponseCost,
   } = useGlobalState();
   const [isOpen, setIsOpen] = useState(true);
+  const [effectKey, setEffectKey] = useState(0);
   const [showResponse, setShowResponse] = useState(false);
 
   const reset = useCallback(() => {
@@ -31,46 +32,63 @@ function Home() {
   const handleAskQuestion = async (q) => {
     reset();
     setQuestion(q);
-
-    if (question) {
-      setShowResponse(true);
-      try {
-        if (question) {
-          setIsOpen(false);
-          setAnswers([]);
-          const res = await getSosResponse(question);
-
-          // add answer cost to usage
-          const cost = calculateResponseUsage(
-            JSON.stringify(res.answers)
-          ).usedUSD;
-
-          setResponseCost(cost);
-          usageStorage.addCost(cost);
-
-          const sortedAnswers = res.answers.sort((a, b) => {
-            if (a.isBest === b.isBest) {
-              return 0;
-            }
-            if (a.isBest === true) {
-              return -1;
-            }
-            return 1;
-          });
-          setAnswers(sortedAnswers);
-          setQuestionTitle(res.questionTitle);
-        }
-      } catch (error) {
-        setIsOpen(true);
-
-        console.log(error.response.data.message);
-        alert(error.response.data.message || error.message);
-
-        reset();
-        setShowResponse(false);
-      }
-    }
+    // force fetch even if previous question text is unaltered
+    setEffectKey((prevKey) => prevKey + 1);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (question) {
+        setShowResponse(true);
+        try {
+          if (question) {
+            setIsOpen(false);
+            setAnswers([]);
+            const res = await getSosResponse(question);
+
+            // add answer cost to usage
+            const cost = calculateResponseUsage(
+              JSON.stringify(res.answers)
+            ).usedUSD;
+
+            setResponseCost(cost);
+            usageStorage.addCost(cost);
+
+            const sortedAnswers = res.answers.sort((a, b) => {
+              if (a.isBest === b.isBest) {
+                return 0;
+              }
+              if (a.isBest === true) {
+                return -1;
+              }
+              return 1;
+            });
+            setAnswers(sortedAnswers);
+            setQuestionTitle(res.questionTitle);
+          }
+        } catch (error) {
+          setIsOpen(true);
+
+          console.log(error.response.data.message);
+          alert(error.response.data.message || error.message);
+
+          reset();
+          setShowResponse(false);
+        }
+      }
+    };
+
+    fetchData();
+    return () => {};
+  }, [
+    question,
+    effectKey,
+    /* won't change: */
+    setAnswers,
+    setQuestionTitle,
+    setResponseCost,
+    reset,
+  ]);
 
   useEffect(() => {
     usageStorage.initializeObject();
