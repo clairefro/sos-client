@@ -1,9 +1,6 @@
-import SosHelmet from "../components/blocks/SosHelmet";
-
 function About() {
   return (
     <div>
-      <SosHelmet subtitle="About" />
       <p>
         This page will have something about the philosophy behind this parody,
         and begging not to be sued.

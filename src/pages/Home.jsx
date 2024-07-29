@@ -30,10 +30,13 @@ function Home() {
   }, [setQuestionTitle, setAnswers]);
 
   const handleAskQuestion = async (q) => {
-    reset();
-    setQuestion(q);
-    // force fetch even if previous question text is unaltered
-    setEffectKey((prevKey) => prevKey + 1);
+    if (q) {
+      reset();
+      setIsOpen(false);
+      setQuestion(q);
+      // force fetch even if previous question text is unaltered
+      setEffectKey((prevKey) => prevKey + 1);
+    }
   };
 
   useEffect(() => {
@@ -41,35 +44,31 @@ function Home() {
       if (question) {
         setShowResponse(true);
         try {
-          if (question) {
-            setIsOpen(false);
-            setAnswers([]);
-            const res = await getSosResponse(question);
+          setAnswers([]);
+          const res = await getSosResponse(question);
 
-            // add answer cost to usage
-            const cost = calculateResponseUsage(
-              JSON.stringify(res.answers)
-            ).usedUSD;
+          // add answer cost to usage
+          const cost = calculateResponseUsage(
+            JSON.stringify(res.answers)
+          ).usedUSD;
 
-            setResponseCost(cost);
-            usageStorage.addCost(cost);
+          setResponseCost(cost);
+          usageStorage.addCost(cost);
 
-            const sortedAnswers = res.answers.sort((a, b) => {
-              if (a.isBest === b.isBest) {
-                return 0;
-              }
-              if (a.isBest === true) {
-                return -1;
-              }
-              return 1;
-            });
-            setAnswers(sortedAnswers);
-            setQuestionTitle(res.questionTitle);
-          }
+          const sortedAnswers = res.answers.sort((a, b) => {
+            if (a.isBest === b.isBest) {
+              return 0;
+            }
+            if (a.isBest === true) {
+              return -1;
+            }
+            return 1;
+          });
+
+          setAnswers(sortedAnswers);
+          setQuestionTitle(res.questionTitle);
         } catch (error) {
           setIsOpen(true);
-
-          console.log(error.response.data.message);
           alert(error.response.data.message || error.message);
 
           reset();
