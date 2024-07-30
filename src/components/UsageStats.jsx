@@ -19,11 +19,22 @@ const UsageStats = () => {
   return (
     <div className="usage-stats">
       <p>You've asked</p>
-      <p>{callDates.length} questions</p>
-      <p>Costing the dev</p>
-      <p>${cost}</p>
       <p>
-        Enjoying SOS and want others to enjoy it too? Consider making a donation
+        <span className="highlight-stat">{callDates.length} questions</span>
+      </p>
+      <p>Costing Claire</p>
+      <p>
+        <span className="highlight-stat">${cost.toFixed(5)}</span>
+      </p>
+      <p>
+        Enjoying this site and want others to enjoy it too? Consider making a{" "}
+        <a
+          href="https://buymeacoffee.com/clairefro"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          donation
+        </a>{" "}
         to keep it afloat!
       </p>
     </div>
