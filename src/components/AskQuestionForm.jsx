@@ -75,7 +75,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
         />
       </div>
       <span className="cost-notice">
-        Question will cost Claire <strong> ${usedUsd.toFixed(5)}</strong>
+        Question will cost the web host <strong> ${usedUsd.toFixed(5)}</strong>
       </span>
       <Button type="submit" disabled={!q}>
         Ask Question

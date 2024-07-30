@@ -271,7 +271,6 @@ button:disabled {
 .content-box-footer-userinfo {
   padding: 0.5rem;
   border-radius: var(--br-s);
-  /* background-color: var(--color-blue-100); */
   min-width: 200px;
   line-height: 1.2rem;
 }

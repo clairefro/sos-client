@@ -21,7 +21,7 @@ function AnswerThread({ answers }) {
           ))}
         </ul>
         <span className="cost-notice">
-          Question and answers costed Claire{" "}
+          Question and answers costed the web host{" "}
           <strong>${(responseCost + questionCost).toFixed(5)}</strong>
         </span>
       </div>
