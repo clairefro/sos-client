@@ -1,21 +1,20 @@
-import axios from 'axios';
-import config from '../config';
+import axios from "axios";
+import config from "../config";
 
-const URL = `${config.SOS_API_BASE_URL}/generate`
+const SosApi = {
+  generateThead: async function (question) {
+    const URL = `${config.SOS_API_BASE_URL}/generate/thread`;
 
-async function getSosResponse(question) {
-    const data = { question }
-
+    const data = { question };
 
     try {
-        const response = await axios.post(URL, data);
-        return response.data;
+      const response = await axios.post(URL, data);
+      return response.data;
     } catch (error) {
-        console.error('Error calling SOS API:', error);
-        throw error;
+      console.error("Error calling SOS API:", error);
+      throw error;
     }
-}
-
-export {
-    getSosResponse
+  },
 };
+
+export { SosApi };

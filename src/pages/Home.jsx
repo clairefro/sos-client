@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useGlobalState } from "../context/GlobalState";
 import Question from "../components/Question";
-import { getSosResponse } from "../util/sosApi";
+import { SosApi } from "../util/sosApi";
 import AskQuestionForm from "../components/AskQuestionForm";
 import AnswerThread from "../components/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
@@ -45,7 +45,7 @@ function Home() {
         setShowResponse(true);
         try {
           setAnswers([]);
-          const res = await getSosResponse(question);
+          const res = await SosApi.generateThead(question);
 
           // add answer cost to usage
           const cost = calculateResponseUsage(
