@@ -19,6 +19,8 @@ function Home() {
     questionTitle,
     setQuestionTitle,
     setResponseCost,
+    setGenerateThreadPrompt,
+    setGenerateReplyPrompt,
   } = useGlobalState();
   const [isOpen, setIsOpen] = useState(true);
   const [effectKey, setEffectKey] = useState(0);
@@ -89,6 +91,23 @@ function Home() {
     reset,
   ]);
 
+  // fetch system prompts from backend to calculate usage cost
+  useEffect(() => {
+    const initializePrompts = async () => {
+      try {
+        const { prompt: threadPrompt } = await SosApi.getGenerateThreadPrompt();
+        const { prompt: replyPrompt } = await SosApi.getGenerateReplyPrompt();
+
+        setGenerateThreadPrompt(threadPrompt);
+        setGenerateReplyPrompt(replyPrompt);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    initializePrompts();
+  }, [setGenerateThreadPrompt, setGenerateReplyPrompt]);
+
+  // set up local storage for usage tracking
   useEffect(() => {
     usageStorage.initializeObject();
   }, []);

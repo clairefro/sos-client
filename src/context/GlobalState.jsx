@@ -10,6 +10,8 @@ export const GlobalStateProvider = ({ children }) => {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionCost, setQuestionCost] = useState(0);
   const [responseCost, setResponseCost] = useState(0);
+  const [generateThreadPrompt, setGenerateThreadPrompt] = useState("");
+  const [generateReplyPrompt, setGenerateReplyPrompt] = useState("");
 
   return (
     <GlobalStateContext.Provider
@@ -24,6 +26,10 @@ export const GlobalStateProvider = ({ children }) => {
         setQuestionCost,
         responseCost,
         setResponseCost,
+        generateThreadPrompt,
+        setGenerateThreadPrompt,
+        generateReplyPrompt,
+        setGenerateReplyPrompt,
       }}
     >
       {children}

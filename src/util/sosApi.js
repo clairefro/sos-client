@@ -1,24 +1,44 @@
 import axios from "axios";
 import config from "../config";
 
+const BASE_URL = config.SOS_API_BASE_URL;
+
 const SosApi = {
   generateThead: async function (question) {
-    const URL = `${config.SOS_API_BASE_URL}/generate/thread`;
+    const url = `${BASE_URL}/generate/thread`;
 
     return await this.call({
-      url: URL,
+      url,
       data: { question },
       method: "post",
     });
   },
 
   generateReply: async function (messages) {
-    const URL = `${config.SOS_API_BASE_URL}/generate/reply`;
+    const url = `${BASE_URL}/generate/reply`;
 
     return await this.call({
-      url: URL,
+      url,
       data: { messages },
       method: "post",
+    });
+  },
+
+  getGenerateThreadPrompt: async function () {
+    const url = `${BASE_URL}/prompts/generateThread`;
+
+    return await this.call({
+      url,
+      method: "get",
+    });
+  },
+
+  getGenerateReplyPrompt: async function () {
+    const url = `${BASE_URL}/prompts/generateReply`;
+
+    return await this.call({
+      url,
+      method: "get",
     });
   },
 

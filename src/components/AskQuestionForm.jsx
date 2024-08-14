@@ -67,7 +67,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
         <MarkdownEditor
           id="question-markdown-editor"
           name="questionMarkdownEditor"
-          placeholder="Enter your question..."
+          placeholder="Ask a coding question..."
           value={q}
           onChange={handleEditorChange}
           style={{ minHeight: "250px", maxHeight: "450px" }}

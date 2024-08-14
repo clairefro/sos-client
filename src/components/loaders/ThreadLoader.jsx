@@ -5,7 +5,7 @@ import ContentLoader from "react-content-loader";
 const width = "90%";
 const FadingLoader = () => {
   return (
-    <div>
+    <div className="thread-loaders">
       <FadingLoaderCard1 />
       <FadingLoaderCard2 />
       <FadingLoaderCard3 />

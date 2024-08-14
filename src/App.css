@@ -20,14 +20,14 @@
 }
 
 html,
-body {
+body,
+#root {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
   font-family: sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--color-black-500);
 }
 
@@ -44,12 +44,15 @@ blockquote {
   border: var(--color-black-225) 1px solid; /** remove border */
 }
 
+body {
+  min-height: 100%;
+}
+
 html,
 body,
 #root,
 .app-container,
 .page-container {
-  height: 100%;
   width: 100%;
 }
 
@@ -60,6 +63,7 @@ body,
 hr {
   border: var(--color-black-225) 0.5px solid;
   margin: 1.5rem 0;
+  border-bottom: 0px;
 }
 
 h1 {
@@ -92,7 +96,7 @@ h1 {
   position: relative;
   max-width: 200px;
   min-width: 150px;
-  height: 100%;
+  min-height: 100vh;
   padding-top: 1.5rem;
   padding-bottom: 0.5rem;
   color: var(--color-black-500);
@@ -135,7 +139,7 @@ h1 {
 
 #main-content-container {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   max-width: 800px;
   padding: 1rem;
   padding-top: 1.5rem;
@@ -190,6 +194,7 @@ button:disabled {
 .answer-thread {
   padding-bottom: 2rem;
 }
+
 .answer-thread h2 {
   font-weight: normal;
   font-size: 19px;
@@ -200,6 +205,14 @@ button:disabled {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.answer-thread-items li:not(:last-child) {
+  border-bottom: 1px solid var(--color-black-225);
+}
+
+.answer {
+  padding: 2rem 0;
 }
 
 /* Collapsable component*/
@@ -246,6 +259,7 @@ button:disabled {
   display: flex;
   gap: 1rem;
 }
+
 .content-box-main {
   flex-grow: 1;
 }
@@ -261,7 +275,7 @@ button:disabled {
   font-size: 13px;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding-top: 2rem;
 }
 
 .content-box-footer-controls {
@@ -306,6 +320,70 @@ button:disabled {
   width: 32px;
 }
 
+.reply {
+  margin: 2rem 0;
+  margin-left: 2rem;
+  font-size: 12px;
+  color: var(--color-black-600);
+}
+
+.reply:not(:last-child)::after {
+  content: "";
+  display: block;
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--color-black-225);
+}
+
+.reply-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.add-comment-input {
+  /* width: 70%; */
+  min-height: calc(3em * 1.1 + 1rem);
+  max-height: none;
+  font: inherit;
+  overflow: auto;
+  padding: 0.5rem;
+  margin-left: 2rem;
+  border: 1px solid var(--color-black-300);
+  border-radius: var(--br-s);
+  resize: vertical !important;
+  font-size: 14px;
+  overflow-y: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.add-comment-input::placeholder {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word; /* For older browsers */
+  text-align: left;
+  vertical-align: top;
+}
+
+::placeholder {
+  color: var(--color-black-300);
+}
+
+/* For older browsers */
+::-webkit-input-placeholder {
+  color: var(--color-black-300);
+}
+::-moz-placeholder {
+  color: var(--color-black-300);
+  opacity: 1; /* Firefox sets opacity to 0.54 by default */
+}
+:-ms-input-placeholder {
+  color: var(--color-black-300);
+}
+:-moz-placeholder {
+  color: var(--color-black-300);
+}
+
 .user-stat::before {
   content: "";
   display: inline-block;
@@ -327,6 +405,19 @@ button:disabled {
 .user-stat.bronze::before {
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2 24 24"><circle cx="12" cy="12" r="10" fill="peru"/></svg>');
 }
+
+.text-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  font-size: 12px;
+  color: var(--color-blue-400); /* Standard link color, adjust as needed */
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .vote-controls {
   display: flex;
   flex-direction: column;
@@ -418,6 +509,12 @@ button:disabled {
   color: var(--color-green-400);
 }
 
+.thread-loaders {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* Mardown rendering tweaks */
 pre.hljs {
   font-size: 13px;
@@ -426,6 +523,8 @@ pre.hljs {
   line-height: 1.1rem;
   max-height: 350px;
   overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 pre code {
@@ -441,12 +540,4 @@ code {
 /* Inline code blocks*/
 :not(pre) > code {
   padding: 1px 5px;
-}
-
-/* Adjustments for mobile devices */
-@media (max-width: 768px) {
-  .modal {
-    width: 90%;
-    max-width: 400px;
-  }
 }

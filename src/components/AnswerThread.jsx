@@ -7,9 +7,9 @@ function AnswerThread({ answers }) {
 
   const Answers = () => {
     return (
-      <div>
+      <>
         <h2>{answers.length} Answers</h2>
-        <ul>
+        <ul className="answer-thread-items">
           {answers.map((a, i) => (
             <li key={i}>
               <Answer
@@ -24,7 +24,7 @@ function AnswerThread({ answers }) {
           Question and answers costed the web host{" "}
           <strong>${(responseCost + questionCost).toFixed(5)}</strong>
         </span>
-      </div>
+      </>
     );
   };
 
