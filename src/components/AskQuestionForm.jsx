@@ -11,6 +11,8 @@ import { currentDateStamp } from "../util/currentDatestamp";
 import { useGlobalState } from "../context/GlobalState";
 
 import "react-markdown-editor-lite/lib/index.css";
+import { pluck } from "../util/pluck";
+import { sampleQuestions } from "../content/sampleQuestions";
 
 const AskQuestionForm = ({ handleAskQuestion }) => {
   const { setQuestionCost } = useGlobalState();
@@ -19,6 +21,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
 
   const [q, setQ] = useState("");
   const [usedUsd, setUsedUsd] = useState(initUsd);
+  const [isRandom, setIsRandom] = useState(false);
 
   const handleEditorChange = (event) => {
     /** MarkdownEditor event */
@@ -57,6 +60,11 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
     displayUsage(updatedQ);
   };
 
+  const handleRandom = () => {
+    const example = pluck(sampleQuestions);
+    setQ(example);
+  };
+
   useEffect(() => {
     usageStorage.initializeObject();
   }, []);
@@ -86,6 +94,13 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
         style={{ marginLeft: "0.5rem" }}
       >
         Clear
+      </ButtonSecondary>
+      <ButtonSecondary
+        onClick={handleRandom}
+        className={!q ? "" : "hidden"}
+        style={{ marginLeft: "0.5rem" }}
+      >
+        Random question
       </ButtonSecondary>
     </form>
   );
