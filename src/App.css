@@ -211,6 +211,20 @@ button:disabled {
   border-bottom: 1px solid var(--color-black-225);
 }
 
+.answer-thread-items .content-box-main li {
+  border-bottom: none;
+}
+
+.answer-thread-items .content-box-main ul {
+  list-style-type: disc;
+  padding-left: 2.5rem;
+}
+
+.answer-thread-items .content-box-main ul,
+.answer-thread-items .content-box-main ol {
+  margin-bottom: 1rem;
+}
+
 .answer {
   padding: 2rem 0;
 }

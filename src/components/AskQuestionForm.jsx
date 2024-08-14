@@ -21,7 +21,6 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
 
   const [q, setQ] = useState("");
   const [usedUsd, setUsedUsd] = useState(initUsd);
-  const [isRandom, setIsRandom] = useState(false);
 
   const handleEditorChange = (event) => {
     /** MarkdownEditor event */
