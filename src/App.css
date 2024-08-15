@@ -22,13 +22,24 @@
 html,
 body,
 #root {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%;
   font-family: sans-serif;
   font-size: 14px;
   color: var(--color-black-500);
+}
+
+html,
+body,
+#root,
+#main-content-container,
+.content-box-body {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
 }
 
 a {
@@ -56,8 +67,14 @@ body,
   width: 100%;
 }
 
+.app-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .page-container {
   display: flex;
+  margin-top: 56px;
 }
 
 hr {
@@ -73,7 +90,8 @@ h1 {
 }
 
 #top-nav {
-  position: relative;
+  position: fixed;
+  background-color: white;
   top: 0;
   left: 0;
   width: 100%;
@@ -86,6 +104,7 @@ h1 {
   align-items: center;
   color: var(--color-black-400);
   font-size: 12px;
+  z-index: 999;
 }
 
 #top-nav #top-nav-logo {
@@ -93,17 +112,17 @@ h1 {
   transform: translateY(7px); /** to deal with off-balance logo */
 }
 
-.top-nav-items {
-}
 #left-nav-container {
+  position: fixed;
+  top: 56;
+  left: 0;
   font-size: 13px;
   border-top: none;
   border-bottom: none;
   border-left: none;
-  position: relative;
   max-width: 200px;
   min-width: 150px;
-  min-height: 100vh;
+  height: 100vh;
   padding-top: 1.5rem;
   padding-bottom: 0.5rem;
   color: var(--color-black-500);
@@ -151,6 +170,7 @@ h1 {
   padding: 1rem;
   padding-top: 1.5rem;
   border: none;
+  margin-left: 160px;
 }
 
 .question {
@@ -562,4 +582,32 @@ code {
 /* Inline code blocks*/
 :not(pre) > code {
   padding: 1px 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #left-nav-container {
+    display: none;
+  }
+  #main-content-container {
+    margin-left: 0;
+  }
+  .content-box {
+    padding-right: 0;
+  }
+  .content-box-main {
+    max-width: calc(100vw - 100px);
+  }
+  .content-box-footer-controls {
+    display: none;
+  }
+  .content-box-footer-userinfo {
+    padding-left: 0;
+  }
+  textarea::placeholder {
+    font-size: 11px;
+  }
+  textarea.add-comment-input {
+    margin-left: 0;
+  }
 }
