@@ -81,6 +81,11 @@ h1 {
   border-right: none;
   border-left: none;
   padding: 0.25rem 0.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--color-black-400);
+  font-size: 12px;
 }
 
 #top-nav #top-nav-logo {
@@ -88,6 +93,8 @@ h1 {
   transform: translateY(7px); /** to deal with off-balance logo */
 }
 
+.top-nav-items {
+}
 #left-nav-container {
   font-size: 13px;
   border-top: none;
