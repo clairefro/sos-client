@@ -298,6 +298,7 @@ button:disabled {
 
 .content-box-footer-userinfo {
   padding: 0.5rem;
+  padding-top: 0;
   border-radius: var(--br-s);
   min-width: 200px;
   line-height: 1.2rem;

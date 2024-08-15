@@ -13,7 +13,7 @@ function ContentBoxFooter({ username, isQuestion }) {
   return (
     <div className="content-box-footer">
       <div className="content-box-footer-controls">
-        Share&nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;Follow&nbsp;&nbsp;&nbsp;Flag
+        Share&nbsp;&nbsp;Edit&nbsp;&nbsp;Follow&nbsp;&nbsp;Flag
       </div>
       <div className="content-box-footer-userinfo">
         <span className="content-box-footer-userinfo-timestamp">
@@ -51,13 +51,15 @@ function ContentBoxFooter({ username, isQuestion }) {
   );
 }
 
-function ContentBoxMain({ body }) {
+function ContentBoxMain({ body, username, thread, setThread, isQuestion }) {
   return (
     <div className="content-box-main">
       <div
         className="content-box-body"
         dangerouslySetInnerHTML={{ __html: mdParser.render(body) }}
       ></div>
+      <ContentBoxFooter username={username} isQuestion={isQuestion} />
+      {!isQuestion && <AnswerReplyChat thread={thread} setThread={setThread} />}
     </div>
   );
 }
@@ -75,12 +77,14 @@ function ContentBox({ body, username, defaultVotes, isQuestion }) {
       <div className="content-box">
         <div className="content-box-vote">
           <VoteControls defaultVotes={defaultVotes} />
-          <ContentBoxMain body={body} />
+          <ContentBoxMain
+            body={body}
+            username={username}
+            isQuestion={isQuestion}
+            thread={thread}
+            setThread={setThread}
+          />
         </div>
-        <ContentBoxFooter username={username} isQuestion={isQuestion} />
-        {!isQuestion && (
-          <AnswerReplyChat thread={thread} setThread={setThread} />
-        )}
       </div>
     </>
   );
