@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import SVG from "react-inlinesvg";
+import { navlinks } from "./navlinks";
 
 function LeftNavLink({ to, text, svgIconPath }) {
   const location = useLocation();
@@ -21,8 +22,14 @@ function LeftNav() {
     <div id="left-nav-container" className="layout-container">
       <div id="left-nav">
         <div id="left-nav-links-container">
-          <LeftNavLink to="/" text="Home" svgIconPath="/icons/home.svg" />
-          <LeftNavLink to="/about" text="About" svgIconPath="/icons/help.svg" />
+          {navlinks.map((l, i) => (
+            <LeftNavLink
+              key={i}
+              to={l.href}
+              text={l.title}
+              svgIconPath={l.iconPath}
+            />
+          ))}
         </div>
       </div>
     </div>

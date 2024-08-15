@@ -1,5 +1,5 @@
-import TopNav from "../components/containers/TopNav";
-import LeftNav from "../components/containers/LeftNav";
+import TopNav from "../components/containers/navs/TopNav";
+import LeftNav from "../components/containers/navs/LeftNav";
 
 function Layout({ children }) {
   return (

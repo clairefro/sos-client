@@ -107,9 +107,24 @@ h1 {
   z-index: 999;
 }
 
+.top-nav-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 #top-nav #top-nav-logo {
   max-width: 150px;
   transform: translateY(7px); /** to deal with off-balance logo */
+}
+
+#top-nav-logo-sm {
+  display: none;
+}
+
+.hamburger-nav {
+  display: none;
 }
 
 #left-nav-container {
@@ -584,14 +599,121 @@ code {
   padding: 1px 5px;
 }
 
+/* HamburgerNav*/
+
+.hamburger-nav {
+  position: relative;
+}
+
+.hamburger-icon {
+  background: none;
+  margin-right: 2rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger-icon span {
+  width: 30px;
+  height: 3px;
+  background-color: var(--color-black-300);
+  transition: all 0.3s linear;
+}
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255);
+  color: var(--color-black-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fullscreen-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fullscreen-menu nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.fullscreen-menu nav ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.fullscreen-menu nav ul li a {
+  color: var(--color-black-400);
+  font-size: 24px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.fullscreen-menu nav ul li a:hover {
+  color: var(--color-black-500);
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--color-black-400);
+  font-size: 46px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--color-black-400);
+}
+
 /* Responsive */
 @media (max-width: 600px) {
+  .hamburger-nav {
+    display: block;
+  }
+
+  #top-nav-logo {
+    display: none;
+  }
+
+  #top-nav-logo-sm {
+    display: block;
+  }
+
+  #top-nav {
+    height: 50px;
+  }
+
   #left-nav-container {
     display: none;
   }
+
+  #hamburger-nav-logo {
+    max-width: 250px;
+  }
+
   #main-content-container {
     margin-left: 0;
   }
+
   .content-box {
     padding-right: 0;
   }
