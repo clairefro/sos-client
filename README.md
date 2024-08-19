@@ -1,21 +1,18 @@
 # StackOverflow Simulator - Client
 
-### TODO
+This is the client app, which relies on the Stack Overflow Simulator API]()
 
-Make fully client side with BYO-API Key, direct to openai?
+## Devlopment and running locally
 
-- [ ] Mobile responsiveness
-- [ ] add multi-modal support (images)
-- [ ] Do something about copyright :P https://policies.stackoverflow.co/company/trademark-guidance/
-- [ ] BYO-API Key component
-- [ ] how are you going to pay for hosting this :/
-- [ ] add attribution to logo component: <a href="https://www.textstudio.com/">Font generator</a>
+First, you'll need to clone and launch the [Stack Overflow Simulator API](https://github.com/clairefro/sos-api?tab=readme-ov-file#devlopment-and-running-locally)
 
-## Development
+Then clone this repo. From the project directory:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`cp .env.example .env` <-- sets up local environemtn variables for you
 
-Currently, two official plugins are available:
+`npm install`
+`npm run dev`)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This should launch the app on port :5172 by default. If the browser doesn't launch automaticcally, navigate to `http://localhost:5173`
+
+The app will look for the API running on port :3000
