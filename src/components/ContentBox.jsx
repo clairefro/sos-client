@@ -59,7 +59,13 @@ function ContentBoxMain({ body, username, thread, setThread, isQuestion }) {
         dangerouslySetInnerHTML={{ __html: mdParser.render(body) }}
       ></div>
       <ContentBoxFooter username={username} isQuestion={isQuestion} />
-      {!isQuestion && <AnswerReplyChat thread={thread} setThread={setThread} />}
+      {!isQuestion && (
+        <AnswerReplyChat
+          thread={thread}
+          setThread={setThread}
+          username={username}
+        />
+      )}
     </div>
   );
 }
