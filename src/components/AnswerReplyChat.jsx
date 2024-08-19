@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Button from "./blocks/Button";
 import { SosApi } from "../util/sosApi";
 import { mdParser } from "../util/mdParser";
+import ReplyVoteControls from "./ReplyVoteControls";
 
 function AddAComment({ setThread }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,12 +51,10 @@ function AddAComment({ setThread }) {
   );
 }
 
-function ReplyUpvoteControls() {}
-
 function Reply({ content, username, role }) {
   return (
     <li className="reply">
-      <ReplyUpvoteControls />
+      <ReplyVoteControls />
       <div className="reply-body">
         <span
           dangerouslySetInnerHTML={{

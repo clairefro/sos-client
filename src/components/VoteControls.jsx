@@ -20,7 +20,7 @@ function VoteControls({ defaultVotes }) {
       </button>
       <span className="vote-display">{votes}</span>
       <button className="vote-button" onClick={handleDownvote}>
-        <SVG src="/icons/arrow-down.svg" title="Upvote"></SVG>
+        <SVG src="/icons/arrow-down.svg" title="Downvote"></SVG>
       </button>
     </div>
   );

@@ -390,6 +390,8 @@ button:disabled {
 }
 
 .reply {
+  display: flex;
+  gap: 0.5rem;
   margin: 1rem 0;
   margin-left: 1rem;
   font-size: 12px;
@@ -411,7 +413,6 @@ button:disabled {
 
 .reply-user-signature {
   color: var(--color-blue-400);
-
   border-radius: var(--br-m);
 }
 
@@ -424,8 +425,37 @@ button:disabled {
   color: var(--color-black-300);
 }
 
+.reply-vote-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  fill: var(--color-black-225);
+  cursor: pointer;
+}
+
+.reply-vote-button:hover {
+  fill: var(--color-orange-500);
+}
+
+.reply-vote-button svg {
+  width: 18px;
+}
+
+.reply-vote-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.reply-vote-display {
+  width: 8px;
+  padding-top: 2px;
+}
+
 .add-comment-input {
-  /* width: 70%; */
   min-height: calc(3em * 1.1 + 1rem);
   max-height: none;
   font: inherit;
