@@ -2,14 +2,17 @@ import { Link, useLocation } from "react-router-dom";
 import SVG from "react-inlinesvg";
 import { navlinks } from "./navlinks";
 
-function LeftNavLink({ to, text, svgIconPath }) {
+function LeftNavLink({ to, text, svgIconPath, isExternal }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
   return (
     <Link
       to={to}
-      className={`left-nav-link ${currentPath === to ? "selected" : ""}`}
+      className={`left-nav-link ${currentPath === to ? "selected" : ""} ${
+        isExternal ? "ext-link" : ""
+      }`}
+      target={isExternal ? "_blank" : undefined}
     >
       <SVG src={svgIconPath} title={text}></SVG>
       {text}
@@ -28,6 +31,7 @@ function LeftNav() {
               to={l.href}
               text={l.title}
               svgIconPath={l.iconPath}
+              isExternal={l.isExternal}
             />
           ))}
         </div>
