@@ -39,7 +39,12 @@ const HamburgerNav = () => {
             </li>
             {navlinks.map((l, i) => (
               <li key={i}>
-                <Link onClick={closeMenu} to={l.href}>
+                <Link
+                  onClick={closeMenu}
+                  to={l.href}
+                  target={l.isExternal ? "_blank" : ""}
+                  className={l.isExternal ? "ext-link" : ""}
+                >
                   {l.title}
                 </Link>
               </li>

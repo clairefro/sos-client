@@ -46,6 +46,25 @@ a {
   color: var(--color-blue-400);
 }
 
+a.ext-link:after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-image: url("/icons/el.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  fill: var(--color-black-225);
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
+/** shimmy! */
+.hamburger-nav a.ext-link:after {
+  padding-bottom: 1.5%;
+  margin-left: 0.25em;
+}
+
 blockquote {
   border-left: 2px solid var(--color-black-300);
   padding-left: 1rem;
