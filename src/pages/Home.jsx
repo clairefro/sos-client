@@ -5,18 +5,16 @@ import { SosApi } from "../util/sosApi";
 import AskQuestionForm from "../components/AskQuestionForm";
 import AnswerThread from "../components/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
-import { usageStorage } from "../util/usageStorage";
 import { calculateResponseUsage } from "../util/calculateOpenAiUsage";
 import ExpandableTab from "../components/blocks/ExpandableTab";
 import UsageStats from "../components/UsageStats";
 import { qaStore } from "../stores/qaStore";
+import { costStore } from "../stores/costStore";
 
 function Home() {
   const {
-    question,
     questionTitle,
     setQuestionTitle,
-    setResponseCost,
     setGenerateThreadPrompt,
     setGenerateReplyPrompt,
   } = useGlobalState();
@@ -52,8 +50,8 @@ function Home() {
             JSON.stringify(res.answers)
           ).usedUSD;
 
-          setResponseCost(cost);
-          usageStorage.addCost(cost);
+          costStore.setResponseCost(cost);
+          costStore.addCost(cost);
 
           const sortedAnswers = res.answers.sort((a, b) => {
             if (a.isBest === b.isBest) {
@@ -83,7 +81,6 @@ function Home() {
     effectKey,
     /* won't change: */
     setQuestionTitle,
-    setResponseCost,
     reset,
   ]);
 
@@ -105,7 +102,7 @@ function Home() {
 
   // set up local storage for usage tracking
   useEffect(() => {
-    usageStorage.initializeObject();
+    costStore.initializeObject();
   }, []);
 
   return (

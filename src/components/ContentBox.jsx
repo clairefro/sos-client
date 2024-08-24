@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { mdParser } from "../util/mdParser";
 import VoteControls from "../components/VoteControls";
 import { randomAvatarDataUri } from "../util/randomAvatarDataUri";
@@ -6,7 +5,6 @@ import { randomInt } from "../util/randomInt";
 import { randomBool } from "../util/randomBool";
 import { randomFutureDateStr } from "../util/randomFutureDateStr";
 import { currentDateStr } from "../util/currentDateStr";
-import { useGlobalState } from "../context/GlobalState";
 import AnswerReplyChat from "./AnswerReplyChat";
 
 function ContentBoxFooter({ username, isQuestion }) {
@@ -51,7 +49,7 @@ function ContentBoxFooter({ username, isQuestion }) {
   );
 }
 
-function ContentBoxMain({ body, username, thread, setThread, isQuestion }) {
+function ContentBoxMain({ answerId, body, username, isQuestion }) {
   return (
     <div className="content-box-main">
       <div
@@ -61,8 +59,7 @@ function ContentBoxMain({ body, username, thread, setThread, isQuestion }) {
       <ContentBoxFooter username={username} isQuestion={isQuestion} />
       {!isQuestion && (
         <AnswerReplyChat
-          thread={thread}
-          setThread={setThread}
+          answerId={answerId}
           username={username}
         />
       )}
@@ -70,26 +67,23 @@ function ContentBoxMain({ body, username, thread, setThread, isQuestion }) {
   );
 }
 
-function ContentBox({ body, username, defaultVotes, isQuestion }) {
-  const { question } = useGlobalState();
-
-  const [thread, setThread] = useState([
-    { role: "user", content: question },
-    { role: "assistant", content: body },
-  ]);
-
+function ContentBox({ answerId, body, username, defaultVotes, isQuestion }) {
   return (
     <>
       <div className="content-box">
         <div className="content-box-vote">
           <VoteControls defaultVotes={defaultVotes} />
-          <ContentBoxMain
-            body={body}
-            username={username}
-            isQuestion={isQuestion}
-            thread={thread}
-            setThread={setThread}
-          />
+
+          { // Adds a quick null check bc body goes undefined briefly on hot reload
+          body &&
+            <ContentBoxMain
+              answerId={answerId}
+              body={body}
+              username={username}
+              isQuestion={isQuestion}
+            />
+          }
+
         </div>
       </div>
     </>

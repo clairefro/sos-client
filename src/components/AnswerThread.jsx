@@ -3,39 +3,47 @@ import Answer from "./Answer";
 import ThreadLoader from "./loaders/ThreadLoader";
 import { qaStore } from "../stores/qaStore";
 import { observer } from "mobx-react";
+import { costStore } from "../stores/costStore";
 
-const AnswerThread = observer(() => {
-  const { responseCost, questionCost } = useGlobalState();
 
-  // Pull answers directly from qaStore
-  const { answers } = qaStore;
-
-  const Answers = () => {
-    return (
-      <>
-        <h2>{answers.length} Answers</h2>
-        <ul className="answer-thread-items">
-          {answers.map((a, i) => (
-            <li key={i}>
-              <Answer
-                content={a.content}
-                isBest={a.isBest}
-                username={a.username}
-              />
-            </li>
-          ))}
-        </ul>
-        <span className="cost-notice">
-          Question and answers costed the web host{" "}
-          <strong>${(responseCost + questionCost).toFixed(5)}</strong>
-        </span>
-      </>
-    );
-  };
+const CurrentQuestionCostDisplay = observer(() => {
+  const { responseCost, questionCost } = costStore;
 
   return (
+    <span className="cost-notice">
+      Question and answers costed the web host{" "}
+      <strong>${(responseCost + questionCost).toFixed(5)}</strong>
+    </span>
+  )
+});
+
+const AnswerThread = observer(() => {
+  // Pull state values directly from stores, the component will rerender when the values change
+  // since it's an observer() and the values are being used during render
+  const answers = qaStore.answers;
+
+  // Rendering the AnswerThread content directly here so we don't need to create
+  // another observable component inside this one
+  return (
     <div className="answer-thread">
-      {answers.length ? <Answers /> : <ThreadLoader />}
+      {!answers || !answers.length ? <ThreadLoader /> : (
+         <>
+          <h2>{answers && answers.length} Answers</h2>
+          <ul className="answer-thread-items">
+            {answers.map((a, i) => (
+              <li key={i}>
+                <Answer
+                  id={i}
+                  content={a.content}
+                  isBest={a.isBest}
+                  username={a.username}
+                />
+              </li>
+            ))}
+          </ul>
+          <CurrentQuestionCostDisplay />
+        </>
+      )}
     </div>
   );
 });

@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
-import { usageStorage } from "../util/usageStorage";
-import { useGlobalState } from "../context/GlobalState";
+import { costStore } from "../stores/costStore";
 
 const UsageStats = () => {
-  const { questionCost, responseCost } = useGlobalState();
-  const [cost, setCost] = useState(0);
-  const [callDates, setCallDates] = useState([]);
-
-  useEffect(() => {
-    updateStats();
-  }, [questionCost, responseCost]);
-
-  const updateStats = () => {
-    setCost(usageStorage.getCost());
-    setCallDates(usageStorage.getCallDates());
-  };
+  const {
+    cost,
+    callDates
+  } = costStore;
 
   return (
     <div className="usage-stats">
