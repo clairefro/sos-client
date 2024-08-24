@@ -1,9 +1,14 @@
 import { useGlobalState } from "../context/GlobalState";
 import Answer from "./Answer";
 import ThreadLoader from "./loaders/ThreadLoader";
+import { qaStore } from "../stores/qaStore";
+import { observer } from "mobx-react";
 
-function AnswerThread({ answers }) {
+const AnswerThread = observer(() => {
   const { responseCost, questionCost } = useGlobalState();
+
+  // Pull answers directly from qaStore
+  const { answers } = qaStore;
 
   const Answers = () => {
     return (
@@ -33,6 +38,6 @@ function AnswerThread({ answers }) {
       {answers.length ? <Answers /> : <ThreadLoader />}
     </div>
   );
-}
+});
 
 export default AnswerThread;

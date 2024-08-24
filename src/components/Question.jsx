@@ -1,6 +1,7 @@
 import ThreeDotsLoader from "./loaders/ThreeDotsLoader";
 import ContentBox from "./ContentBox";
 import { randomInt } from "../util/randomInt";
+import { qaStore } from "../stores/qaStore";
 
 function QuestionTitleDetail({ label, value }) {
   return (
@@ -24,8 +25,11 @@ function QuestionDetailsBox() {
   );
 }
 
-function Question({ title, body }) {
+function Question({ title }) {
   const hasResponse = !!title;
+
+  const { question: body } = qaStore;
+
   return (
     <>
       <div className="question">
