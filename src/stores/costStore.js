@@ -4,17 +4,17 @@ const storageKey = 'sos-usage';
 const initialObject = { cost: 0.0, callDates: [] };
 
 class CostStore {
-  cost: number = 0.0;
-  callDates: string[] = [];
-  questionCost: number = 0.0;
-  responseCost: number = 0.0;
+  cost = 0.0;
+  callDates = [];
+  questionCost = 0.0;
+  responseCost = 0.0;
 
   constructor() {
     makeAutoObservable(this);
     this.initializeObject();
   }
 
-  initializeObject(): void {
+  initializeObject() {
     const storedObject = this.getObjectFromLocalStorage();
     if (storedObject) {
       this.cost = storedObject.cost;
@@ -24,7 +24,7 @@ class CostStore {
     }
   }
 
-  getObjectFromLocalStorage(): { cost: number; callDates: string[] } | null {
+  getObjectFromLocalStorage() {
     const storedValue = localStorage.getItem(storageKey);
     if (storedValue) {
       try {
@@ -38,7 +38,7 @@ class CostStore {
     return null;
   }
 
-  setObjectToLocalStorage(obj: { cost: number; callDates: string[] }): void {
+  setObjectToLocalStorage(obj) {
     try {
       localStorage.setItem(storageKey, JSON.stringify(obj));
     } catch (e) {
@@ -46,43 +46,43 @@ class CostStore {
     }
   }
 
-  resetObject(): void {
+  resetObject() {
     this.cost = initialObject.cost;
     this.callDates = initialObject.callDates;
     this.setObjectToLocalStorage(initialObject);
   }
 
-  addCost(amount: number): void {
+  addCost(amount) {
     this.cost += amount;
     this.setObjectToLocalStorage({ cost: this.cost, callDates: this.callDates });
   }
 
-  addCallDate(date: string): void {
+  addCallDate(date) {
     this.callDates.push(date);
     this.setObjectToLocalStorage({ cost: this.cost, callDates: this.callDates });
   }
 
-  getCost(): number {
+  getCost() {
     return this.cost;
   }
 
-  getCallDates(): string[] {
+  getCallDates() {
     return this.callDates;
   }
 
-  setQuestionCost(amount: number): void {
+  setQuestionCost(amount) {
     this.questionCost = amount;
   }
 
-  setResponseCost(amount: number): void {
+  setResponseCost(amount) {
     this.responseCost = amount;
   }
 
-  getQuestionCost(): number {
+  getQuestionCost() {
     return this.questionCost;
   }
 
-  getResponseCost(): number {
+  getResponseCost() {
     return this.responseCost;
   }
 }

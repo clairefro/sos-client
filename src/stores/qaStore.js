@@ -1,26 +1,15 @@
 import { makeAutoObservable, ObservableMap, runInAction } from "mobx";
 
-interface Answer {
-  content: string;
-  isBest: boolean;
-  username: string;
-}
-
-interface Message {
-  role: string;
-  content: string;
-}
-
 class QAStore {
-  question: string = '';
-  answers: Array<Answer> = [];
-  threads: ObservableMap = new ObservableMap();
+  question = '';
+  answers = [];
+  threads = new ObservableMap();
 
   constructor () {
     makeAutoObservable(this);
   }
 
-  setAnswers (answers: Array<Answer>): void {
+  setAnswers (answers) {
     // There is a way to use decorators on the function
     // instead of using runInAction, but it's kinda a PITA
     // to make work with tsconfig... maybe a problem
@@ -42,13 +31,13 @@ class QAStore {
     })
   }
 
-  setQuestion (question: string): void {
+  setQuestion (question) {
     runInAction(() => {
       this.question = question;
     });
   }
 
-  addToThread (threadId: string, newMessage: Message): void {
+  addToThread (threadId, newMessage) {
     const currentValue = this.threads.get(threadId);
 
     if (!currentValue) {
