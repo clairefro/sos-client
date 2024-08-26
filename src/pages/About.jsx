@@ -1,3 +1,5 @@
+import Contributors from "../components/Contributors";
+
 function About() {
   return (
     <div>
@@ -9,6 +11,8 @@ function About() {
         Logo attribution - red rubber stamp image generated with{" "}
         <a href="https://www.textstudio.com/">Textstudio Font generator</a>{" "}
       </p>
+      <h2>Contributors</h2>
+      <Contributors />
     </div>
   );
 }

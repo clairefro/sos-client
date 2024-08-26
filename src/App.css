@@ -210,7 +210,7 @@ h1 {
 
 #main-content {
   overflow-wrap: break-word;
-  word-wrap: break-word;
+  word-wrap: normal;
   word-break: normal;
   hyphens: auto;
   max-width: 800px;
