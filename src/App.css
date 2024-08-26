@@ -202,14 +202,18 @@ h1 {
 #main-content-container {
   width: 100%;
   min-height: 100%;
-  max-width: 800px;
   padding: 1rem;
   padding-top: 1.5rem;
   border: none;
   margin-left: 160px;
+}
+
+#main-content {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  word-break: break-all;
+  word-break: normal;
+  hyphens: auto;
+  max-width: 800px;
 }
 
 .question {
@@ -833,5 +837,17 @@ code {
   .add-comment-toggle .cost-notice {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+/* for large displays*/
+
+@media (min-width: 1200px) {
+  #main-content-container {
+    display: flex;
+    justify-content: center;
+  }
+  #main-content {
+    width: 800px;
   }
 }
