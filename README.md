@@ -2,7 +2,7 @@
 
 A functional paradoy of Stack Overflow, using AI to generate instant replies to coding questions.
 
-[demo](https://github.com/user-attachments/assets/544aae81-c468-4898-a914-c3ce8806d9cd)
+[demo](https://github.com/user-attachments/assets/97b18e8c-d5bc-4c2b-b9b3-43bea328935e)
 
 This is the client app, which relies on the [Stack Overflow Simulator API](https://github.com/clairefro/sos-api)
 
