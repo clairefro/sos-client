@@ -34,7 +34,7 @@ npm run dev
 
 The above steps will run the API on port 3000
 
-### 1. Set up the sos-client
+### 2. Set up the sos-client
 
 Somewhere else, clone this client repo
 
