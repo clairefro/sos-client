@@ -32,7 +32,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
     const { text } = event;
     setQ(text);
 
-    /** calculate context token usage */
+    /** predict input token usage */
     debounce(displayUsage(text));
   };
 

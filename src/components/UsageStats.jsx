@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
 import { costStore } from "../stores/costStore";
 
 const UsageStats = () => {
-  const {
-    cost,
-    callDates
-  } = costStore;
+  const { cost, callDates } = costStore;
 
   return (
     <div className="usage-stats">
