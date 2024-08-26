@@ -413,11 +413,16 @@ button:disabled {
   display: inline;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  line-height: 1.4rem;
 }
 
 .reply-body p {
   display: inline;
-  line-height: 1.4rem;
+}
+
+.reply-body ol,
+.reply-body ul {
+  margin-top: 1rem;
 }
 
 .reply-container {
@@ -643,6 +648,10 @@ button:disabled {
   height: 280px;
 }
 
+.expandable-tab.expanded .tab-content {
+  border: 2px solid var(--color-orange-500);
+}
+
 .tab-button {
   font-size: 14px;
   padding: 0.75rem;
@@ -659,7 +668,7 @@ button:disabled {
 
 .expandable-tab.expanded .tab-content {
   transform: translateY(0);
-  transform: translateX(-200px);
+  transform: translateX(-212px);
 }
 
 .highlight-stat {

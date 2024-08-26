@@ -9,9 +9,10 @@ function TopNav() {
       </Link>
       <Link to="/">
         <img
-          src="/favicon.png"
+          src="/sos-sm.png"
           id="top-nav-logo-sm"
           alt="StackOverflow Simulator"
+          style={{ width: "32px" }}
         />
       </Link>
       <div className="top-nav-items">
