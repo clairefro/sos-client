@@ -53,6 +53,6 @@ npm run dev
 
 This should launch the client app on port `:5173` by default. If the browser doesn't launch automaticcally, navigate to `http://localhost:5173`
 
-The app will look for the API running on port :3000
+The app will look for the API running on port `:3000`
 
 Happy debugging!
