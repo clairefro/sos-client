@@ -207,6 +207,9 @@ h1 {
   padding-top: 1.5rem;
   border: none;
   margin-left: 160px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .question {
@@ -280,6 +283,7 @@ button:disabled {
 
 .answer-thread-items .content-box-main ul {
   list-style-type: disc;
+  margin-left: 2rem;
 }
 
 .answer-thread-items .content-box-main ul,
@@ -397,12 +401,14 @@ button:disabled {
   width: 32px;
 }
 
-.replies .reply {
-  list-style: none;
+.replies {
+  margin-left: 0 !important;
 }
 
 .reply-body {
   display: inline;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .reply-body p {
@@ -410,26 +416,35 @@ button:disabled {
   line-height: 1.4rem;
 }
 
+.reply-container {
+  list-style: none;
+}
+
 .reply {
   display: flex;
   gap: 0.5rem;
   margin: 1rem 0;
-  margin-left: 1rem;
   font-size: 12px;
   color: var(--color-black-600);
 }
 
-.reply:not(:last-child)::after {
+.reply-container:not(:last-child)::after {
   content: "";
   display: block;
   margin-top: 1rem;
-  border-bottom: 1px solid var(--color-black-225);
+  border-bottom: 1px solid var(--color-black-150);
+  width: 100%;
+}
+
+.reply:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 .reply-controls {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .reply-user-signature {
@@ -598,6 +613,11 @@ button:disabled {
   font-style: italic;
   margin-bottom: 1rem;
   font-size: 13px;
+}
+
+.add-comment-toggle .cost-notice {
+  margin-left: 2rem;
+  max-width: 77.5%; /* lol */
 }
 
 .expandable-tab {
@@ -809,5 +829,9 @@ code {
   }
   textarea.add-comment-input {
     margin-left: 0;
+  }
+  .add-comment-toggle .cost-notice {
+    margin-left: 0;
+    width: 100%;
   }
 }

@@ -4,17 +4,25 @@ import Button from "./blocks/Button";
 import ButtonSecondary from "./blocks/ButtonSecondary";
 import { mdParser } from "../util/mdParser";
 import { delay } from "../util/delay";
-import { calculateContextUsage } from "../util/calculateOpenAiUsage";
-
+import { calculateInputUsage } from "../util/calculateOpenAiUsage";
+import { useGlobalState } from "../context/GlobalState";
 import { currentDateStamp } from "../util/currentDatestamp";
+import dummySystemMsg from "../content/dummySystemMsg";
 
 import "react-markdown-editor-lite/lib/index.css";
 import { pluck } from "../util/pluck";
 import { sampleQuestions } from "../content/sampleQuestions";
 import { costStore } from "../stores/costStore";
+import PredictiveCostNotice from "./PredictiveCostNotice";
+import { debounce } from "../util/debounce";
 
 const AskQuestionForm = ({ handleAskQuestion }) => {
-  const initUsd = calculateContextUsage("").usedUSD;
+  const { generateThreadPrompt } = useGlobalState();
+
+  const initUsd = calculateInputUsage({
+    prompt: "",
+    systemMsg: generateThreadPrompt || dummySystemMsg,
+  }).usedUSD;
 
   const [q, setQ] = useState("");
   const [usedUsd, setUsedUsd] = useState(initUsd);
@@ -25,11 +33,14 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
     setQ(text);
 
     /** calculate context token usage */
-    displayUsage(text);
+    debounce(displayUsage(text));
   };
 
   const displayUsage = (text) => {
-    const usage = calculateContextUsage(text);
+    const usage = calculateInputUsage({
+      prompt: text,
+      systemMsg: generateThreadPrompt,
+    });
     setUsedUsd(usage.usedUSD);
   };
 
@@ -78,9 +89,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
           renderHTML={(text) => mdParser.render(text)}
         />
       </div>
-      <span className="cost-notice">
-        Question will cost the web host <strong> ${usedUsd.toFixed(5)}</strong>
-      </span>
+      <PredictiveCostNotice usedUsd={usedUsd} />
       <Button type="submit" disabled={!q}>
         Ask Question
       </Button>

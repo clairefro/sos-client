@@ -4,20 +4,38 @@ import { SosApi } from "../util/sosApi";
 import { mdParser } from "../util/mdParser";
 import ReplyVoteControls from "./ReplyVoteControls";
 import { costStore } from "../stores/costStore";
-import { calculateContextUsage } from "../util/calculateOpenAiUsage";
+import {
+  calculateInputUsage,
+  calculateOutputUsage,
+} from "../util/calculateOpenAiUsage";
+import { debounce } from "../util/debounce";
 import { currentDateStamp } from "../util/currentDatestamp";
 import { observer } from "mobx-react";
 import { qaStore } from "../stores/qaStore";
+import { useGlobalState } from "../context/GlobalState";
+import dummySystemMsg from "../content/dummySystemMsg";
+import PredictiveCostNotice from "./PredictiveCostNotice";
 
-const AddAComment = observer(({
-  answerId
-}) => {
+const AddAComment = observer(({ answerId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [textareaVal, setTextareaVal] = useState("");
   const textareaRef = useRef(null);
+  const { generateReplyPrompt } = useGlobalState();
+
+  // Have to use threads.get() instead of threads[id] here becuase it's an
+  // observable map
+  const thread = qaStore.threads.get(answerId);
+
+  const initUsd = calculateInputUsage({
+    messages: thread,
+    systemMsg: generateReplyPrompt || dummySystemMsg,
+  }).usedUSD;
+
+  const [usedUsd, setUsedUsd] = useState(initUsd);
 
   function handleChange(e) {
     setTextareaVal(e.target.value);
+    debounce(displayUsage(e.target.value));
   }
 
   function handleAddComment() {
@@ -27,8 +45,18 @@ const AddAComment = observer(({
     setTextareaVal("");
 
     // Update cost with the newly added question
-    const threadedQuestionCost = calculateContextUsage(userReply);
-    costStore.setQuestionCost(costStore.questionCost + threadedQuestionCost.usedUSD);
+    const threadedQuestionCost = calculateInputUsage(userReply);
+    costStore.setQuestionCost(
+      costStore.questionCost + threadedQuestionCost.usedUSD
+    );
+  }
+
+  function displayUsage(text) {
+    const usage = calculateInputUsage({
+      prompt: text,
+      systemMsg: generateReplyPrompt || dummySystemMsg,
+    });
+    setUsedUsd(usage.usedUSD);
   }
 
   useEffect(() => {
@@ -56,6 +84,7 @@ const AddAComment = observer(({
             />
             <Button onClick={handleAddComment}>Add comment</Button>
           </div>
+          <PredictiveCostNotice usedUsd={usedUsd} />
         </>
       )}
     </div>
@@ -64,24 +93,26 @@ const AddAComment = observer(({
 
 function Reply({ content, username, role }) {
   return (
-    <li className="reply">
-      <ReplyVoteControls />
-      <div className="reply-body">
-        <span
-          dangerouslySetInnerHTML={{
-            __html: mdParser.render(content.replace(/(@\S+)/g, "**$1**")),
-          }}
-          className="reply-content"
-        ></span>
-        <span> – </span>
-        <span
-          className={`reply-user-signature ${
-            role === "assistant" ? "is-op" : ""
-          }`}
-        >
-          {role === "user" ? "you" : username}
-        </span>
-        <span className="reply-timestamp"> a moment ago</span>
+    <li className="reply-container">
+      <div className="reply">
+        <ReplyVoteControls />
+        <div className="reply-body">
+          <span
+            dangerouslySetInnerHTML={{
+              __html: mdParser.render(content.replace(/(@\S+)/g, "**$1**")),
+            }}
+            className="reply-content"
+          ></span>
+          <span> – </span>
+          <span
+            className={`reply-user-signature ${
+              role === "assistant" ? "is-op" : ""
+            }`}
+          >
+            {role === "user" ? "you" : username}
+          </span>
+          <span className="reply-timestamp"> a moment ago</span>
+        </div>
       </div>
     </li>
   );
@@ -118,15 +149,17 @@ const AnswerReplyChat = observer(({ answerId, username }) => {
           qaStore.addToThread(answerId, { role: "assistant", content: reply });
 
           // Update cost info
-          costStore.setResponseCost(costStore.responseCost + calculateContextUsage(response).usedUSD);
-          costStore.addCallDate(currentDateStamp())
+          costStore.setResponseCost(
+            costStore.responseCost + calculateOutputUsage(reply).usedUSD
+          );
+          costStore.addCallDate(currentDateStamp());
         } catch (error) {
           alert("Error fetching data:", error);
         }
       };
       fetchReply();
     }
-  }, [thread]);
+  }, [thread, answerId]);
 
   return (
     <div className="comment-replies">
@@ -134,11 +167,9 @@ const AnswerReplyChat = observer(({ answerId, username }) => {
         replies={thread && thread.length > 2 ? thread.slice(2) : []}
         username={username}
       />
-      <AddAComment
-        answerId={answerId}
-      />
+      <AddAComment answerId={answerId} />
     </div>
   );
-})
+});
 
 export default AnswerReplyChat;

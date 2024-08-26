@@ -5,7 +5,7 @@ import { SosApi } from "../util/sosApi";
 import AskQuestionForm from "../components/AskQuestionForm";
 import AnswerThread from "../components/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
-import { calculateResponseUsage } from "../util/calculateOpenAiUsage";
+import { calculateOutputUsage } from "../util/calculateOpenAiUsage";
 import ExpandableTab from "../components/blocks/ExpandableTab";
 import UsageStats from "../components/UsageStats";
 import { qaStore } from "../stores/qaStore";
@@ -46,7 +46,7 @@ function Home() {
           const res = await SosApi.generateThead(qaStore.question);
 
           // add answer cost to usage
-          const cost = calculateResponseUsage(
+          const cost = calculateOutputUsage(
             JSON.stringify(res.answers)
           ).usedUSD;
 
