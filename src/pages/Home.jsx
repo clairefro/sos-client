@@ -5,20 +5,16 @@ import { SosApi } from "../util/sosApi";
 import AskQuestionForm from "../components/AskQuestionForm";
 import AnswerThread from "../components/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
-import { usageStorage } from "../util/usageStorage";
 import { calculateResponseUsage } from "../util/calculateOpenAiUsage";
 import ExpandableTab from "../components/blocks/ExpandableTab";
 import UsageStats from "../components/UsageStats";
+import { qaStore } from "../stores/qaStore";
+import { costStore } from "../stores/costStore";
 
 function Home() {
   const {
-    question,
-    setQuestion,
-    answers,
-    setAnswers,
     questionTitle,
     setQuestionTitle,
-    setResponseCost,
     setGenerateThreadPrompt,
     setGenerateReplyPrompt,
   } = useGlobalState();
@@ -28,14 +24,14 @@ function Home() {
 
   const reset = useCallback(() => {
     setQuestionTitle("");
-    setAnswers([]);
-  }, [setQuestionTitle, setAnswers]);
+    qaStore.setAnswers([]);
+  }, [setQuestionTitle]);
 
   const handleAskQuestion = async (q) => {
     if (q) {
       reset();
       setIsOpen(false);
-      setQuestion(q);
+      qaStore.setQuestion(q);
       // force fetch even if previous question text is unaltered
       setEffectKey((prevKey) => prevKey + 1);
     }
@@ -43,19 +39,19 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (question) {
+      if (qaStore.question) {
         setShowResponse(true);
         try {
-          setAnswers([]);
-          const res = await SosApi.generateThead(question);
+          qaStore.setAnswers([]);
+          const res = await SosApi.generateThead(qaStore.question);
 
           // add answer cost to usage
           const cost = calculateResponseUsage(
             JSON.stringify(res.answers)
           ).usedUSD;
 
-          setResponseCost(cost);
-          usageStorage.addCost(cost);
+          costStore.setResponseCost(cost);
+          costStore.addCost(cost);
 
           const sortedAnswers = res.answers.sort((a, b) => {
             if (a.isBest === b.isBest) {
@@ -67,7 +63,7 @@ function Home() {
             return 1;
           });
 
-          setAnswers(sortedAnswers);
+          qaStore.setAnswers(sortedAnswers);
           setQuestionTitle(res.questionTitle);
         } catch (error) {
           setIsOpen(true);
@@ -82,12 +78,9 @@ function Home() {
     fetchData();
     return () => {};
   }, [
-    question,
     effectKey,
     /* won't change: */
-    setAnswers,
     setQuestionTitle,
-    setResponseCost,
     reset,
   ]);
 
@@ -109,7 +102,7 @@ function Home() {
 
   // set up local storage for usage tracking
   useEffect(() => {
-    usageStorage.initializeObject();
+    costStore.initializeObject();
   }, []);
 
   return (
@@ -124,8 +117,8 @@ function Home() {
           <AskQuestionForm handleAskQuestion={handleAskQuestion} />
         </Collapsible>
 
-        {showResponse && <Question title={questionTitle} body={question} />}
-        {showResponse && <AnswerThread answers={answers} />}
+        {showResponse && <Question title={questionTitle} />}
+        {showResponse && <AnswerThread />}
         <ExpandableTab title="Usage">
           <UsageStats />
         </ExpandableTab>

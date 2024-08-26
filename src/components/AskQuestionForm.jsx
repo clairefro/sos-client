@@ -6,17 +6,14 @@ import { mdParser } from "../util/mdParser";
 import { delay } from "../util/delay";
 import { calculateContextUsage } from "../util/calculateOpenAiUsage";
 
-import { usageStorage } from "../util/usageStorage";
 import { currentDateStamp } from "../util/currentDatestamp";
-import { useGlobalState } from "../context/GlobalState";
 
 import "react-markdown-editor-lite/lib/index.css";
 import { pluck } from "../util/pluck";
 import { sampleQuestions } from "../content/sampleQuestions";
+import { costStore } from "../stores/costStore";
 
 const AskQuestionForm = ({ handleAskQuestion }) => {
-  const { setQuestionCost } = useGlobalState();
-
   const initUsd = calculateContextUsage("").usedUSD;
 
   const [q, setQ] = useState("");
@@ -42,14 +39,14 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
       handleAskQuestion(q);
 
       // add cost and call to usage storage
-      usageStorage.addCallDate(currentDateStamp());
-      usageStorage.addCost(usedUsd);
+      costStore.addCallDate(currentDateStamp());
+      costStore.addCost(usedUsd);
 
       delay(100).then(() => {
         setUsedUsd(initUsd);
       });
       // parent
-      setQuestionCost(usedUsd);
+      costStore.setQuestionCost(usedUsd);
     }
   };
 
@@ -65,7 +62,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
   };
 
   useEffect(() => {
-    usageStorage.initializeObject();
+    costStore.initializeObject();
   }, []);
 
   return (

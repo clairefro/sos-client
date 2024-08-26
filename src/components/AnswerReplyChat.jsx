@@ -3,8 +3,15 @@ import Button from "./blocks/Button";
 import { SosApi } from "../util/sosApi";
 import { mdParser } from "../util/mdParser";
 import ReplyVoteControls from "./ReplyVoteControls";
+import { costStore } from "../stores/costStore";
+import { calculateContextUsage } from "../util/calculateOpenAiUsage";
+import { currentDateStamp } from "../util/currentDatestamp";
+import { observer } from "mobx-react";
+import { qaStore } from "../stores/qaStore";
 
-function AddAComment({ setThread }) {
+const AddAComment = observer(({
+  answerId
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [textareaVal, setTextareaVal] = useState("");
   const textareaRef = useRef(null);
@@ -15,9 +22,13 @@ function AddAComment({ setThread }) {
 
   function handleAddComment() {
     const userReply = textareaVal;
-    setThread((prev) => [...prev, { role: "user", content: userReply }]);
+    qaStore.addToThread(answerId, { role: "user", content: userReply });
     setIsOpen(false);
     setTextareaVal("");
+
+    // Update cost with the newly added question
+    const threadedQuestionCost = calculateContextUsage(userReply);
+    costStore.setQuestionCost(costStore.questionCost + threadedQuestionCost.usedUSD);
   }
 
   useEffect(() => {
@@ -49,7 +60,7 @@ function AddAComment({ setThread }) {
       )}
     </div>
   );
-}
+});
 
 function Reply({ content, username, role }) {
   return (
@@ -91,34 +102,43 @@ function Replies({ replies, username }) {
   );
 }
 
-function AnswerReplyChat({ thread, setThread, username }) {
+const AnswerReplyChat = observer(({ answerId, username }) => {
+  // Have to use threads.get() instead of threads[id] here becuase it's an
+  // observable map
+  const thread = qaStore.threads.get(answerId);
+
   useEffect(() => {
-    console.log("entered use effect");
-    console.log(thread);
     // only fetch reply if last item is of role "user"
-    if (thread[thread.length - 1].role === "user") {
+    if (thread && thread[thread.length - 1].role === "user") {
       const fetchReply = async () => {
         try {
           const response = await SosApi.generateReply(thread);
           const { reply } = response;
-          setThread((prev) => [...prev, { role: "assistant", content: reply }]);
+
+          qaStore.addToThread(answerId, { role: "assistant", content: reply });
+
+          // Update cost info
+          costStore.setResponseCost(costStore.responseCost + calculateContextUsage(response).usedUSD);
+          costStore.addCallDate(currentDateStamp())
         } catch (error) {
           alert("Error fetching data:", error);
         }
       };
       fetchReply();
     }
-  }, [thread, setThread]);
+  }, [thread]);
 
   return (
     <div className="comment-replies">
       <Replies
-        replies={thread.length > 2 ? thread.slice(2) : []}
+        replies={thread && thread.length > 2 ? thread.slice(2) : []}
         username={username}
       />
-      <AddAComment setThread={setThread} />
+      <AddAComment
+        answerId={answerId}
+      />
     </div>
   );
-}
+})
 
 export default AnswerReplyChat;
