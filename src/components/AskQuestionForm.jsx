@@ -6,7 +6,6 @@ import { mdParser } from "../util/mdParser";
 import { delay } from "../util/delay";
 import { calculateInputUsage } from "../util/calculateOpenAiUsage";
 import { useGlobalState } from "../context/GlobalState";
-import { currentDateStamp } from "../util/currentDatestamp";
 import dummySystemMsg from "../content/dummySystemMsg";
 
 import "react-markdown-editor-lite/lib/index.css";
@@ -50,13 +49,12 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
       handleAskQuestion(q);
 
       // add cost and call to usage storage
-      costStore.addCallDate(currentDateStamp());
+      costStore.addCall();
       costStore.addCost(usedUsd);
 
       delay(100).then(() => {
         setUsedUsd(initUsd);
       });
-      // parent
       costStore.setQuestionCost(usedUsd);
     }
   };

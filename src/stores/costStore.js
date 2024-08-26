@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
+import { currentDateStamp } from "../util/currentDatestamp";
 
-const storageKey = 'sos-usage';
+const storageKey = "sos-usage";
 const initialObject = { cost: 0.0, callDates: [] };
 
 class CostStore {
@@ -30,7 +31,7 @@ class CostStore {
       try {
         return JSON.parse(storedValue);
       } catch (e) {
-        console.error('Error parsing JSON from local storage, resetting', e);
+        console.error("Error parsing JSON from local storage, resetting", e);
         this.resetObject();
         return initialObject;
       }
@@ -42,7 +43,7 @@ class CostStore {
     try {
       localStorage.setItem(storageKey, JSON.stringify(obj));
     } catch (e) {
-      console.error('Error saving object to local storage', e);
+      console.error("Error saving object to local storage", e);
     }
   }
 
@@ -54,12 +55,19 @@ class CostStore {
 
   addCost(amount) {
     this.cost += amount;
-    this.setObjectToLocalStorage({ cost: this.cost, callDates: this.callDates });
+    this.setObjectToLocalStorage({
+      cost: this.cost,
+      callDates: this.callDates,
+    });
   }
 
-  addCallDate(date) {
+  addCall() {
+    const date = currentDateStamp();
     this.callDates.push(date);
-    this.setObjectToLocalStorage({ cost: this.cost, callDates: this.callDates });
+    this.setObjectToLocalStorage({
+      cost: this.cost,
+      callDates: this.callDates,
+    });
   }
 
   getCost() {
@@ -91,7 +99,7 @@ export const costStore = new CostStore();
 
 // Example usage:
 // costStore.addCost(50);
-// costStore.addCallDate('2023-06-25');
+// costStore.addCall();
 // costStore.setQuestionCost(20);
 // costStore.setResponseCost(30);
 // console.log('Updated Cost:', costStore.getCost());

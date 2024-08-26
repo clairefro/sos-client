@@ -205,7 +205,7 @@ h1 {
   padding: 1rem;
   padding-top: 1.5rem;
   border: none;
-  margin-left: 160px;
+  margin-left: 152px;
 }
 
 #main-content {
@@ -626,7 +626,7 @@ button:disabled {
 
 .add-comment-toggle .cost-notice {
   margin-left: 2rem;
-  max-width: 77.5%; /* lol */
+  max-width: 78%;
 }
 
 .expandable-tab {
@@ -681,18 +681,20 @@ button:disabled {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-left: -2rem;
 }
 
 /* Mardown rendering tweaks */
 pre.hljs {
   font-size: 13px;
-  width: 100%;
+  max-width: 100%;
   padding: 0.75rem;
   line-height: 1.1rem;
   max-height: 350px;
   overflow: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
+  display: block;
 }
 
 pre code {
@@ -708,6 +710,30 @@ code {
 /* Inline code blocks*/
 :not(pre) > code {
   padding: 1px 5px;
+}
+
+/** Code copy  button */
+.code-container {
+  position: relative; /* Establish a positioning context for the button */
+}
+
+.code-container .copy-btn {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--color-black-400);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0.3em 0.5em;
+  font-size: 0.8em;
+  opacity: 0.8;
+  font-size: 11px;
+}
+
+.code-container:hover .copy-btn {
+  display: block;
 }
 
 /* HamburgerNav*/

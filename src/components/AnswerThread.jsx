@@ -1,10 +1,8 @@
-import { useGlobalState } from "../context/GlobalState";
 import Answer from "./Answer";
 import ThreadLoader from "./loaders/ThreadLoader";
 import { qaStore } from "../stores/qaStore";
 import { observer } from "mobx-react";
 import { costStore } from "../stores/costStore";
-
 
 const CurrentQuestionCostDisplay = observer(() => {
   const { responseCost, questionCost } = costStore;
@@ -14,7 +12,7 @@ const CurrentQuestionCostDisplay = observer(() => {
       Question and answers costed the web host{" "}
       <strong>${(responseCost + questionCost).toFixed(5)}</strong>
     </span>
-  )
+  );
 });
 
 const AnswerThread = observer(() => {
@@ -26,8 +24,10 @@ const AnswerThread = observer(() => {
   // another observable component inside this one
   return (
     <div className="answer-thread">
-      {!answers || !answers.length ? <ThreadLoader /> : (
-         <>
+      {!answers || !answers.length ? (
+        <ThreadLoader />
+      ) : (
+        <>
           <h2>{answers && answers.length} Answers</h2>
           <ul className="answer-thread-items">
             {answers.map((a, i) => (

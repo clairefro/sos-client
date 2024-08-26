@@ -9,7 +9,6 @@ import {
   calculateOutputUsage,
 } from "../util/calculateOpenAiUsage";
 import { debounce } from "../util/debounce";
-import { currentDateStamp } from "../util/currentDatestamp";
 import { observer } from "mobx-react";
 import { qaStore } from "../stores/qaStore";
 import { useGlobalState } from "../context/GlobalState";
@@ -46,6 +45,8 @@ const AddAComment = observer(({ answerId }) => {
 
     // Update cost with the newly added question
     const threadedQuestionCost = calculateInputUsage(userReply);
+    costStore.addCall();
+    costStore.addCost(threadedQuestionCost.usedUSD);
     costStore.setQuestionCost(
       costStore.questionCost + threadedQuestionCost.usedUSD
     );
@@ -53,7 +54,7 @@ const AddAComment = observer(({ answerId }) => {
 
   function displayUsage(text) {
     const usage = calculateInputUsage({
-      prompt: text,
+      messages: [...thread, { role: "user", content: text }],
       systemMsg: generateReplyPrompt || dummySystemMsg,
     });
     setUsedUsd(usage.usedUSD);
@@ -152,7 +153,6 @@ const AnswerReplyChat = observer(({ answerId, username }) => {
           costStore.setResponseCost(
             costStore.responseCost + calculateOutputUsage(reply).usedUSD
           );
-          costStore.addCallDate(currentDateStamp());
         } catch (error) {
           alert("Error fetching data:", error);
         }
