@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { observer } from "mobx-react-lite";
 
 // components
 import Button from "../blocks/Button";
@@ -19,7 +20,6 @@ import {
 // state
 import { qaStore } from "../../stores/qaStore";
 import { costStore } from "../../stores/costStore";
-import { observer } from "mobx-react";
 import { useGlobalState } from "../../context/GlobalState";
 
 // other

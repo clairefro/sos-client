@@ -1,9 +1,10 @@
+import { observer } from "mobx-react-lite";
+
 import Answer from "./Answer";
 import ThreadLoader from "../loaders/ThreadLoader";
 import CurrentQuestionCostDisplay from "../question/CurrentQuestionCostDisplay";
 
 import { qaStore } from "../../stores/qaStore";
-import { observer } from "mobx-react";
 
 const AnswerThread = observer(() => {
   // Pull state values directly from stores, the component will rerender when the values change
