@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
 import MarkdownEditor from "react-markdown-editor-lite";
-import Button from "./blocks/Button";
-import ButtonSecondary from "./blocks/ButtonSecondary";
-import { mdParser } from "../util/mdParser";
-import { delay } from "../util/delay";
-import { calculateInputUsage } from "../util/calculateOpenAiUsage";
-import { useGlobalState } from "../context/GlobalState";
-import dummySystemMsg from "../content/dummySystemMsg";
 
+// components
+import Button from "../blocks/Button";
+import ButtonSecondary from "../blocks/ButtonSecondary";
+import PredictiveCostNotice from "../shared/PredictiveCostNotice";
+import dummySystemMsg from "../../content/dummySystemMsg";
+
+// state
+import { useGlobalState } from "../../context/GlobalState";
+import { costStore } from "../../stores/costStore";
+
+// util
+import { mdParser } from "../../util/md/mdParser";
+import { delay } from "../../util/wait/delay";
+import { calculateInputUsage } from "../../util/tokens/calculateOpenAiUsage";
+import { pluck } from "../../util/random/pluck";
+import { debounce } from "../../util/wait/debounce";
+
+import { sampleQuestions } from "../../content/sampleQuestions";
+
+// styles
 import "react-markdown-editor-lite/lib/index.css";
-import { pluck } from "../util/pluck";
-import { sampleQuestions } from "../content/sampleQuestions";
-import { costStore } from "../stores/costStore";
-import PredictiveCostNotice from "./PredictiveCostNotice";
-import { debounce } from "../util/debounce";
 
 const AskQuestionForm = ({ handleAskQuestion }) => {
   const { generateThreadPrompt } = useGlobalState();

@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
-import { costStore } from "../stores/costStore";
+
+import { costStore } from "../../stores/costStore";
 
 const CurrentQuestionCostDisplay = observer(() => {
   const { responseCost, questionCost } = costStore;

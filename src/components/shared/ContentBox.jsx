@@ -1,11 +1,12 @@
-import { mdParser } from "../util/mdParser";
-import VoteControls from "../components/VoteControls";
-import { randomAvatarDataUri } from "../util/randomAvatarDataUri";
-import { randomInt } from "../util/randomInt";
-import { randomBool } from "../util/randomBool";
-import { randomFutureDateStr } from "../util/randomFutureDateStr";
-import { currentDateStr } from "../util/currentDateStr";
-import AnswerReplyChat from "./AnswerReplyChat";
+import VoteControls from "./VoteControls";
+import AnswerReplyChat from "../answer/AnswerReplyChat";
+
+import { mdParser } from "../../util/md/mdParser";
+import { randomAvatarDataUri } from "../../util/random/randomAvatarDataUri";
+import { randomInt } from "../../util/random/randomInt";
+import { randomBool } from "../../util/random/randomBool";
+import { randomFutureDateStr } from "../../util/random/randomFutureDateStr";
+import { currentDateStr } from "../../util/date/currentDateStr";
 
 function ContentBoxFooter({ username, isQuestion }) {
   return (
@@ -58,10 +59,7 @@ function ContentBoxMain({ answerId, body, username, isQuestion }) {
       ></div>
       <ContentBoxFooter username={username} isQuestion={isQuestion} />
       {!isQuestion && (
-        <AnswerReplyChat
-          answerId={answerId}
-          username={username}
-        />
+        <AnswerReplyChat answerId={answerId} username={username} />
       )}
     </div>
   );
@@ -74,16 +72,17 @@ function ContentBox({ answerId, body, username, defaultVotes, isQuestion }) {
         <div className="content-box-vote">
           <VoteControls defaultVotes={defaultVotes} />
 
-          { // Adds a quick null check bc body goes undefined briefly on hot reload
-          body &&
-            <ContentBoxMain
-              answerId={answerId}
-              body={body}
-              username={username}
-              isQuestion={isQuestion}
-            />
+          {
+            // Adds a quick null check bc body goes undefined briefly on hot reload
+            body && (
+              <ContentBoxMain
+                answerId={answerId}
+                body={body}
+                username={username}
+                isQuestion={isQuestion}
+              />
+            )
           }
-
         </div>
       </div>
     </>

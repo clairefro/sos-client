@@ -1,4 +1,4 @@
-import Contributors from "../components/Contributors";
+import Contributors from "../components/info/Contributors";
 
 function About() {
   return (

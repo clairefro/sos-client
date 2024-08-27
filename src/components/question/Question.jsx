@@ -1,7 +1,9 @@
-import ThreeDotsLoader from "./loaders/ThreeDotsLoader";
-import ContentBox from "./ContentBox";
-import { randomInt } from "../util/randomInt";
-import { qaStore } from "../stores/qaStore";
+import ThreeDotsLoader from "../loaders/ThreeDotsLoader";
+import ContentBox from "../shared/ContentBox";
+
+import { qaStore } from "../../stores/qaStore";
+
+import { randomInt } from "../../util/random/randomInt";
 
 function QuestionTitleDetail({ label, value }) {
   return (

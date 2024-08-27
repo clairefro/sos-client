@@ -1,19 +1,29 @@
 import { useState, useEffect, useRef } from "react";
-import Button from "./blocks/Button";
-import { SosApi } from "../util/sosApi";
-import { mdParser } from "../util/mdParser";
+
+// components
+import Button from "../blocks/Button";
 import ReplyVoteControls from "./ReplyVoteControls";
-import { costStore } from "../stores/costStore";
+import PredictiveCostNotice from "../shared/PredictiveCostNotice";
+
+// lib
+import { SosApi } from "../../lib/sosApi";
+
+// util
+import { mdParser } from "../../util/md/mdParser";
+import { debounce } from "../../util/wait/debounce";
 import {
   calculateInputUsage,
   calculateOutputUsage,
-} from "../util/calculateOpenAiUsage";
-import { debounce } from "../util/debounce";
+} from "../../util/tokens/calculateOpenAiUsage";
+
+// state
+import { qaStore } from "../../stores/qaStore";
+import { costStore } from "../../stores/costStore";
 import { observer } from "mobx-react";
-import { qaStore } from "../stores/qaStore";
-import { useGlobalState } from "../context/GlobalState";
-import dummySystemMsg from "../content/dummySystemMsg";
-import PredictiveCostNotice from "./PredictiveCostNotice";
+import { useGlobalState } from "../../context/GlobalState";
+
+// other
+import dummySystemMsg from "../../content/dummySystemMsg";
 
 const AddAComment = observer(({ answerId }) => {
   const [isOpen, setIsOpen] = useState(false);

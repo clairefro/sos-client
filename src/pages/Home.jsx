@@ -1,15 +1,18 @@
-import { useEffect, useState, useCallback } from "react";
-import { useGlobalState } from "../context/GlobalState";
-import Question from "../components/Question";
-import { SosApi } from "../util/sosApi";
-import AskQuestionForm from "../components/AskQuestionForm";
-import AnswerThread from "../components/AnswerThread";
+import { useCallback, useEffect, useState } from "react";
+
+import AnswerThread from "../components/answer/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
-import { calculateOutputUsage } from "../util/calculateOpenAiUsage";
 import ExpandableTab from "../components/blocks/ExpandableTab";
-import UsageStats from "../components/UsageStats";
-import { qaStore } from "../stores/qaStore";
+import AskQuestionForm from "../components/question/AskQuestionForm";
+import Question from "../components/question/Question";
+import UsageStats from "../components/info/UsageStats";
+
+import { useGlobalState } from "../context/GlobalState";
 import { costStore } from "../stores/costStore";
+import { qaStore } from "../stores/qaStore";
+
+import { calculateOutputUsage } from "../util/tokens/calculateOpenAiUsage";
+import { SosApi } from "../lib/sosApi";
 
 function Home() {
   const {

@@ -1,5 +1,6 @@
-import { randomInt } from "../util/randomInt";
-import ContentBox from "./ContentBox";
+import ContentBox from "../shared/ContentBox";
+
+import { randomInt } from "../../util/random/randomInt";
 
 function Answer({ id, content, username, isBest }) {
   return (

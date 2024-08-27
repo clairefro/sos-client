@@ -1,5 +1,5 @@
 import { GPTTokens } from "gpt-tokens";
-import config from "../config";
+import config from "../../config";
 
 // for measuring cost of request (input) tokens.
 // systemMsg should always be passed. prompt / messages  are either-or parameters

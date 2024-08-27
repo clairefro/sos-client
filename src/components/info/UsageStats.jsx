@@ -1,5 +1,6 @@
-import { costStore } from "../stores/costStore";
-import { observer } from "mobx-react"; // Use mobx-react-lite for functional components
+import { observer } from "mobx-react";
+
+import { costStore } from "../../stores/costStore";
 
 const UsageStats = observer(() => {
   const { cost, callDates } = costStore;

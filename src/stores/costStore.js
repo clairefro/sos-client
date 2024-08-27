@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { currentDateStamp } from "../util/currentDatestamp";
+
+import { currentDateStamp } from "../util/date/currentDatestamp";
 
 const storageKey = "sos-usage";
 const initialObject = { cost: 0.0, callDates: [] };

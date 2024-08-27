@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import SVG from "react-inlinesvg";
+
 import { navlinks } from "./navlinks";
 
 function LeftNavLink({ to, text, svgIconPath, isExternal }) {
