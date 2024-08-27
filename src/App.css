@@ -681,7 +681,7 @@ button:disabled {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-left: -2rem;
+  margin-left: -1rem;
 }
 
 /* Mardown rendering tweaks */
