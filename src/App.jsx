@@ -19,6 +19,7 @@ function App() {
   useEffect(() => {
     // hide default loader on mount
     if (hasMounted) {
+      console.log("has mounted");
       const defaulLoader = document.getElementById("default-loader");
 
       if (defaulLoader) {
