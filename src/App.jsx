@@ -10,23 +10,20 @@ import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
-import { useHasMounted } from "./hooks/useHasMounted";
 import { useEffect } from "react";
 
+function hideLoader() {
+  const defaulLoader = document.getElementById("default-loader");
+
+  if (defaulLoader) {
+    defaulLoader.style.display = "none";
+  }
+}
+
 function App() {
-  const hasMounted = useHasMounted();
-
   useEffect(() => {
-    // hide default loader on mount
-    if (hasMounted) {
-      console.log("has mounted");
-      const defaulLoader = document.getElementById("default-loader");
-
-      if (defaulLoader) {
-        defaulLoader.style.display = "none";
-      }
-    }
-  }, [hasMounted]);
+    hideLoader();
+  }, []);
 
   return (
     <GlobalStateProvider>
