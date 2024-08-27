@@ -43,13 +43,18 @@ const AddAComment = observer(({ answerId }) => {
     setIsOpen(false);
     setTextareaVal("");
 
-    // Update cost with the newly added question
-    const threadedQuestionCost = calculateInputUsage(userReply);
+    // Update cost with the newly added question - convert message proxies into normal js objects
+    const messages = JSON.parse(JSON.stringify(qaStore.threads.get(answerId)));
+
+    const threadedQuestionCost = calculateInputUsage({
+      messages,
+      systemMsg: generateReplyPrompt || dummySystemMsg,
+    });
+
+    const newQuestionCost = threadedQuestionCost.usedUSD;
     costStore.addCall();
-    costStore.addCost(threadedQuestionCost.usedUSD);
-    costStore.setQuestionCost(
-      costStore.questionCost + threadedQuestionCost.usedUSD
-    );
+    costStore.addCost(newQuestionCost);
+    costStore.setQuestionCost(costStore.questionCost + newQuestionCost);
   }
 
   function displayUsage(text) {

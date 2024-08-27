@@ -8,6 +8,10 @@ This is the client app, which relies on the [Stack Overflow Simulator API](https
 
 ![mermaid-diagram-2024-08-26-115855](https://github.com/user-attachments/assets/f6217db8-6418-420b-a909-9551528392c2)
 
+## Rate limit
+
+Currently limits to 15 calls/min
+
 ## Devlopment and running locally
 
 You can run Stack Overflow Simulator locally using your own OpenAI API key for greater control of your data.
