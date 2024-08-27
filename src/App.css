@@ -22,6 +22,7 @@
 html,
 body,
 #root {
+  background-color: white;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -86,6 +87,18 @@ body,
 .app-container,
 .page-container {
   width: 100%;
+}
+
+#default-loader {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -99;
 }
 
 .app-container {

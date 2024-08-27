@@ -31,8 +31,42 @@
     />
     <meta name="twitter:image" content="https://www.sosimulator.xyz/og.png" />
     <link rel="canonical" href="https://sosimulator.xyz" />
+
+    <style>
+      /* for default loader */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- Default loader while waiting for first paint -->
+    <div
+      id="default-loader"
+      style="
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: -99;
+      "
+    >
+      <img
+        style="animation: spin 2s cubic-bezier(0.1, 0.7, 0.2, 1)"
+        src="/logo.png"
+      />
+    </div>
+    <!-- end loader -->
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

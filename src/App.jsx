@@ -10,8 +10,23 @@ import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import { useHasMounted } from "./hooks/useHasMounted";
+import { useEffect } from "react";
 
 function App() {
+  const hasMounted = useHasMounted();
+
+  useEffect(() => {
+    // hide default loader on mount
+    if (hasMounted) {
+      const defaulLoader = document.getElementById("default-loader");
+
+      if (defaulLoader) {
+        defaulLoader.style.display = "none";
+      }
+    }
+  }, [hasMounted]);
+
   return (
     <GlobalStateProvider>
       <BrowserRouter>
