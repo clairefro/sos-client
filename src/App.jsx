@@ -10,20 +10,27 @@ import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
-function hideLoader() {
-  const defaulLoader = document.getElementById("default-loader");
+// function hideLoader() {
+//   console.log("calling hide loader");
+//   const splashLoader = document.getElementById("splash-loader");
 
-  if (defaulLoader) {
-    defaulLoader.style.display = "none";
-  }
-}
+//   if (splashLoader) {
+//     // splashLo
+//     splashLoader.classList.add("fade-out");
+
+//     setTimeout(() => {
+//       // splashLoader.style.display = "none";
+//       splashLoader.remove();
+//     }, 1000);
+//   }
+// }
 
 function App() {
-  useEffect(() => {
-    hideLoader();
-  }, []);
+  // useEffect(() => {
+  //   hideLoader();
+  // }, []);
 
   return (
     <GlobalStateProvider>

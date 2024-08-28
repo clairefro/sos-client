@@ -3,6 +3,7 @@
 import ContentLoader from "react-content-loader";
 
 const width = "90%";
+
 const FadingLoader = () => {
   return (
     <div className="thread-loaders">
