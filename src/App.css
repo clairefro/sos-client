@@ -821,7 +821,6 @@ code {
   justify-content: center;
   opacity: 0.9;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .fullscreen-menu.open {
