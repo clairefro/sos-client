@@ -2,10 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 
 import AnswerThread from "../components/answer/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
-import ExpandableTab from "../components/blocks/ExpandableTab";
 import AskQuestionForm from "../components/question/AskQuestionForm";
 import Question from "../components/question/Question";
-import UsageStats from "../components/info/UsageStats";
 
 import { useGlobalState } from "../context/GlobalState";
 import { costStore } from "../stores/costStore";
@@ -121,9 +119,6 @@ function Home() {
 
       {showResponse && <Question title={questionTitle} />}
       {showResponse && <AnswerThread />}
-      <ExpandableTab title="Usage">
-        <UsageStats />
-      </ExpandableTab>
     </>
   );
 }
