@@ -123,6 +123,10 @@ h1 {
   margin-bottom: 8px;
 }
 
+.info-page li {
+  margin-bottom: 0.5rem;
+}
+
 #top-nav {
   position: fixed;
   background-color: white;

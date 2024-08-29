@@ -110,22 +110,20 @@ function Home() {
 
   return (
     <>
-      <div id="main-content">
-        <Collapsible
-          title="Ask a coding question"
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          hideTitleOnOpen={true}
-        >
-          <AskQuestionForm handleAskQuestion={handleAskQuestion} />
-        </Collapsible>
+      <Collapsible
+        title="Ask a coding question"
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        hideTitleOnOpen={true}
+      >
+        <AskQuestionForm handleAskQuestion={handleAskQuestion} />
+      </Collapsible>
 
-        {showResponse && <Question title={questionTitle} />}
-        {showResponse && <AnswerThread />}
-        <ExpandableTab title="Usage">
-          <UsageStats />
-        </ExpandableTab>
-      </div>
+      {showResponse && <Question title={questionTitle} />}
+      {showResponse && <AnswerThread />}
+      <ExpandableTab title="Usage">
+        <UsageStats />
+      </ExpandableTab>
     </>
   );
 }

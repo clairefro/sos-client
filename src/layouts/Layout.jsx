@@ -8,7 +8,7 @@ function Layout({ children }) {
       <div className="page-container">
         <LeftNav />
         <main id="main-content-container" className="layout-container">
-          {children}
+          <div id="main-content">{children}</div>
         </main>
       </div>
     </div>
