@@ -43,7 +43,7 @@ function Privacy() {
         </li>
         <li>
           For this reason, <strong>do not submit any sensitive data</strong>{" "}
-          such as proprietary code or information
+          such as proprietary code or private information
         </li>
         <li>
           For more control over your data, you can download and run the app
