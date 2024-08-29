@@ -626,6 +626,8 @@ button:disabled {
 .vote-controls {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  min-width: 52px;
 }
 
 .vote-button {
@@ -656,7 +658,7 @@ button:disabled {
   text-align: center;
   margin: 0.5rem 0;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 16px;
   color: var(--color-black-600);
 }
 
