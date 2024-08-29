@@ -1,5 +1,6 @@
 import TopNav from "../components/containers/navs/TopNav";
 import LeftNav from "../components/containers/navs/LeftNav";
+import Footer from "../components/containers/Footer";
 
 function Layout({ children }) {
   return (
@@ -11,6 +12,7 @@ function Layout({ children }) {
           <div id="main-content">{children}</div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 }

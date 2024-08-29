@@ -3,16 +3,23 @@ import SVG from "react-inlinesvg";
 
 import { navlinks } from "./navlinks";
 
-function LeftNavLink({ to, text, svgIconPath, isExternal }) {
+function LeftNavLink({ to, text, svgIconPath, isExternal, sectionBreak }) {
   const location = useLocation();
   const currentPath = location.pathname;
+
+  let classNames = `left-nav-link ${currentPath === to ? "selected" : ""} ${
+    isExternal ? "ext-link" : ""
+  }`;
+
+  // add extra margin for section break links
+  if (sectionBreak) {
+    classNames += " left-nav-link-with-section-break";
+  }
 
   return (
     <Link
       to={to}
-      className={`left-nav-link ${currentPath === to ? "selected" : ""} ${
-        isExternal ? "ext-link" : ""
-      }`}
+      className={classNames}
       target={isExternal ? "_blank" : undefined}
     >
       <SVG src={svgIconPath} title={text}></SVG>
@@ -33,6 +40,7 @@ function LeftNav() {
               text={l.title}
               svgIconPath={l.iconPath}
               isExternal={l.isExternal}
+              sectionBreak={l.sectionBreak}
             />
           ))}
         </div>

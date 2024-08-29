@@ -19,6 +19,7 @@ const navlinks = [
     title: "Report bug",
     iconPath: "/icons/bug.svg",
     isExternal: true,
+    sectionBreak: true,
   },
 ];
 
