@@ -72,6 +72,18 @@ function Privacy() {
           expose your questions or answers to any party but OpenAI.{" "}
         </li>
       </ul>
+      <h3>Questions?</h3>
+      <p>
+        If you have any questions about this policy, DM{" "}
+        <a
+          href="https://x.com/clairefroe"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @clairefroe
+        </a>{" "}
+        on X
+      </p>
     </div>
   );
 }
