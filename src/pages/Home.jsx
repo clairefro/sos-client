@@ -24,7 +24,10 @@ function Home() {
     currentLocationPathname,
     previousLocationPathname,
   } = useGlobalState();
-  const [isOpen, setIsOpen] = useState(true);
+
+  const isRenavigated = currentLocationPathname !== previousLocationPathname;
+
+  const [isOpen, setIsOpen] = useState(isRenavigated ? false : true);
   const [effectKey, setEffectKey] = useState(0);
   const [showResponse, setShowResponse] = useState(false);
 
@@ -45,8 +48,8 @@ function Home() {
 
   useEffect(() => {
     /** Do not refetch answers when user navigates to other route  */
-    if (currentLocationPathname !== previousLocationPathname) {
-      setIsOpen(false);
+    if (isRenavigated) {
+      // setIsOpen(false);
       setShowResponse(true);
       return;
     }
