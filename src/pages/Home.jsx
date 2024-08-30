@@ -32,9 +32,7 @@ function Home() {
     shouldPreserveQuestionState ? false : true
   );
   const [effectKey, setEffectKey] = useState(0);
-  const [showResponse, setShowResponse] = useState(
-    shouldPreserveQuestionState ? true : false
-  );
+  const [showResponse, setShowResponse] = useState(false);
 
   const reset = useCallback(() => {
     setQuestionTitle("");
@@ -53,7 +51,10 @@ function Home() {
 
   useEffect(() => {
     /** Do not refetch answers when user navigates to other route  */
-    if (shouldPreserveQuestionState) return;
+    if (shouldPreserveQuestionState) {
+      setShowResponse(true);
+      return;
+    }
 
     const fetchData = async () => {
       if (qaStore.question) {
