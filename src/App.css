@@ -203,6 +203,7 @@ h1 {
 #left-nav {
   position: fixed;
   top: calc(56px + var(----h-top-allotment));
+  width: var(--max-w-left-nav);
 }
 
 #left-nav-links-container a {
