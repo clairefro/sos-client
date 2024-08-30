@@ -18,14 +18,15 @@ const UsageStats = observer(() => {
       </p>
       <p>Enjoying this site and want others to enjoy it too? </p>
       <p>
-        Consider making a{" "}
+        Your{" "}
         <a
           href="https://buymeacoffee.com/clairefro"
           target="_blank"
           rel="noopener noreferrer"
         >
           donation
-        </a>
+        </a>{" "}
+        keeps it going!
       </p>
     </div>
   );

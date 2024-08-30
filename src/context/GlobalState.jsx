@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const GlobalStateContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useGlobalState = () => useContext(GlobalStateContext);
 
 export const GlobalStateProvider = ({ children }) => {

@@ -715,6 +715,7 @@ button:disabled {
 
 .expandable-tab.expanded .tab-content {
   border: 2px solid var(--color-orange-500);
+  cursor: auto;
 }
 
 .tab-button {
