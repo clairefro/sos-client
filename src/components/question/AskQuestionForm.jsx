@@ -10,6 +10,7 @@ import dummySystemMsg from "../../content/dummySystemMsg";
 // state
 import { useGlobalState } from "../../context/GlobalState";
 import { costStore } from "../../stores/costStore";
+import { qaStore } from "../../stores/qaStore";
 
 // util
 import { mdParser } from "../../util/md/mdParser";
@@ -31,7 +32,7 @@ const AskQuestionForm = ({ handleAskQuestion }) => {
     systemMsg: generateThreadPrompt || dummySystemMsg,
   }).usedUSD;
 
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(qaStore.question);
   const [usedUsd, setUsedUsd] = useState(initUsd);
 
   const handleEditorChange = (event) => {

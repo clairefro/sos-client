@@ -23,6 +23,9 @@
   --max-w-main-content: 1000px;
   --max-w-left-nav: 150px;
   --max-w-page-content: calc(var(--max-w-left-nav) + var(--max-w-main-content));
+
+  /* heights */
+  --h-top-allotment: 1.5rem;
 }
 
 html,
@@ -197,6 +200,11 @@ h1 {
   color: var(--color-black-500);
 }
 
+#left-nav {
+  position: fixed;
+  top: calc(56px + var(----h-top-allotment));
+}
+
 #left-nav-links-container a {
   text-decoration: none;
   color: inherit;
@@ -236,9 +244,11 @@ h1 {
 }
 
 #main-content-container {
+  flex: 1;
   width: 100%;
   min-height: 100%;
   padding: 1.5rem;
+  padding-top: var(--h-top-allotment);
   padding-bottom: 5rem;
   border: none;
   overflow-wrap: break-word;
@@ -374,6 +384,11 @@ button:disabled {
 
 #question-markdown-editor .editor-container {
   overflow-y: scroll;
+}
+
+/* wonky line height for some reason */
+.editor-container pre.hljs {
+  line-height: 1.5rem !important;
 }
 
 #ask-question-form-editor {
