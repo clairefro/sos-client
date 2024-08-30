@@ -25,11 +25,16 @@ function Home() {
     previousLocationPathname,
   } = useGlobalState();
 
-  const isRenavigated = currentLocationPathname !== previousLocationPathname;
+  const shouldPreserveQuestionState =
+    currentLocationPathname !== previousLocationPathname && qaStore.question;
 
-  const [isOpen, setIsOpen] = useState(isRenavigated ? false : true);
+  const [isOpen, setIsOpen] = useState(
+    shouldPreserveQuestionState ? false : true
+  );
   const [effectKey, setEffectKey] = useState(0);
-  const [showResponse, setShowResponse] = useState(false);
+  const [showResponse, setShowResponse] = useState(
+    shouldPreserveQuestionState ? true : false
+  );
 
   const reset = useCallback(() => {
     setQuestionTitle("");
@@ -48,11 +53,8 @@ function Home() {
 
   useEffect(() => {
     /** Do not refetch answers when user navigates to other route  */
-    if (isRenavigated) {
-      // setIsOpen(false);
-      setShowResponse(true);
-      return;
-    }
+    if (shouldPreserveQuestionState) return;
+
     const fetchData = async () => {
       if (qaStore.question) {
         setShowResponse(true);
