@@ -3,6 +3,7 @@
 import ContentLoader from "react-content-loader";
 
 const width = "90%";
+const title = "Summoning nerds...";
 
 const FadingLoader = () => {
   return (
@@ -23,6 +24,7 @@ const FadingLoaderCard1 = () => {
       height={40}
       backgroundColor="#ababab"
       foregroundColor="#fafafa"
+      title={title}
     >
       <rect x="70" y="15" rx="5" ry="5" width={width} height="15" />
       <rect x="70" y="39" rx="5" ry="5" width={width} height="9" />
@@ -38,6 +40,7 @@ const FadingLoaderCard2 = () => {
       height={40}
       backgroundColor="#bfbfbf"
       foregroundColor="#fafafa"
+      title={title}
     >
       <rect x="70" y="15" rx="5" ry="5" width={width} height="15" />
       <rect x="70" y="39" rx="5" ry="5" width={width} height="9" />
@@ -53,6 +56,7 @@ const FadingLoaderCard3 = () => {
       height={40}
       backgroundColor="#dadada"
       foregroundColor="#fafafa"
+      title={title}
     >
       <rect x="70" y="15" rx="5" ry="5" width={width} height="15" />
       <rect x="70" y="39" rx="5" ry="5" width={width} height="9" />
@@ -68,6 +72,7 @@ const FadingLoaderCard4 = () => {
       height={40}
       backgroundColor="#ececec"
       foregroundColor="#fafafa"
+      title={title}
     >
       <rect x="70" y="15" rx="5" ry="5" width={width} height="15" />
       <rect x="70" y="39" rx="5" ry="5" width={width} height="9" />
@@ -83,6 +88,7 @@ const FadingLoaderCard5 = () => {
       height={40}
       backgroundColor="#f7f7f7"
       foregroundColor="#fafafa"
+      title={title}
     >
       <rect x="70" y="15" rx="5" ry="5" width={width} height="15" />
       <rect x="70" y="39" rx="5" ry="5" width={width} height="9" />

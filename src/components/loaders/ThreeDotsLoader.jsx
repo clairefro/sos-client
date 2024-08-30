@@ -6,6 +6,7 @@ const ThreeDotsLoader = (props) => (
     height="5rem"
     width="100%"
     backgroundColor="transparent"
+    title="Loading..."
     {...props}
   >
     <circle cx="150" cy="86" r="8" />
