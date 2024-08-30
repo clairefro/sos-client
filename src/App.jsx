@@ -14,8 +14,8 @@ import "./App.css";
 
 function App() {
   return (
-    <GlobalStateProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <GlobalStateProvider>
         <Layout>
           <Routes>
             <Route exact path="/" element={<Home />} />
@@ -25,8 +25,8 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
-      </BrowserRouter>
-    </GlobalStateProvider>
+      </GlobalStateProvider>
+    </BrowserRouter>
   );
 }
 

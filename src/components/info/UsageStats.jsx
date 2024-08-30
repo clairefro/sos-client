@@ -4,7 +4,6 @@ import { costStore } from "../../stores/costStore";
 
 const UsageStats = observer(() => {
   const { cost, callDates } = costStore;
-
   return (
     <div className="usage-stats">
       <p>You've asked</p>

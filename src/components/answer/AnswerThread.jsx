@@ -38,5 +38,4 @@ const AnswerThread = observer(() => {
     </div>
   );
 });
-
 export default AnswerThread;

@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 
+/** Components */
 import AnswerThread from "../components/answer/AnswerThread";
 import Collapsible from "../components/blocks/Collapsible";
 import AskQuestionForm from "../components/question/AskQuestionForm";
 import Question from "../components/question/Question";
 
+/** State */
 import { useGlobalState } from "../context/GlobalState";
 import { costStore } from "../stores/costStore";
 import { qaStore } from "../stores/qaStore";
 
+/** Util */
 import { calculateOutputUsage } from "../util/tokens/calculateOpenAiUsage";
 import { SosApi } from "../lib/sosApi";
 
@@ -18,6 +21,8 @@ function Home() {
     setQuestionTitle,
     setGenerateThreadPrompt,
     setGenerateReplyPrompt,
+    currentLocationPathname,
+    previousLocationPathname,
   } = useGlobalState();
   const [isOpen, setIsOpen] = useState(true);
   const [effectKey, setEffectKey] = useState(0);
@@ -39,6 +44,12 @@ function Home() {
   };
 
   useEffect(() => {
+    /** Do not refetch answers when user navigates to other route  */
+    if (currentLocationPathname !== previousLocationPathname) {
+      setIsOpen(false);
+      setShowResponse(true);
+      return;
+    }
     const fetchData = async () => {
       if (qaStore.question) {
         setShowResponse(true);
@@ -78,11 +89,12 @@ function Home() {
 
     fetchData();
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     effectKey,
-    /* won't change: */
-    setQuestionTitle,
-    reset,
+    // /* won't change: */
+    // setQuestionTitle,
+    // reset,
   ]);
 
   // fetch system prompts from backend to calculate usage cost
