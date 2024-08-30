@@ -9,8 +9,7 @@ const sampleQuestions = [
 </html>
 \`\`\`
 `,
-  `
-I have a simple anchor tag component that extends the native \`<a>\` tag.
+  `I have a simple anchor tag component that extends the native \`<a>\` tag.
 
 I've defined my typescript interface to extend \`React.HTMLAttributes<HTMLAnchorElement>\`, but when I attempt to use component \`A\` and pass props like \`rel\` and \`target\` I get IntrinsicAttributes errors. 
 
@@ -49,8 +48,7 @@ Type '{ children: ReactNode; href: string; className: string; target: string; }'
 \`\`\`
 `,
   `what unix command can I use to see currently available RAM?`,
-  `
-  how can I do this in Python?
+  `how can I do this in Python?
 
 \`\`\`js
 function pluck(arr) {

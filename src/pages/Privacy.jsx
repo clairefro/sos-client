@@ -74,15 +74,14 @@ function Privacy() {
       </ul>
       <h3>Questions?</h3>
       <p>
-        If you have any questions about this policy, DM{" "}
+        If you have any questions about this policy, message{" "}
         <a
           href="https://x.com/clairefroe"
           target="_blank"
           rel="noopener noreferrer"
         >
-          @clairefroe
-        </a>{" "}
-        on X
+          @clairefroe on X
+        </a>
       </p>
     </div>
   );

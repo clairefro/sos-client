@@ -24,13 +24,13 @@ function TopNav() {
         <div className="top-nav-items">
           <div className="top-nav-items-left">
             <div className="top-nav-item">
-              A functional parody of{" "}
+              A functional parody of the{" "}
               <a
                 href="https://stackoverflow.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                the real StackOverflow
+                real StackOverflow
               </a>
             </div>
           </div>
