@@ -54,7 +54,7 @@ function ContentBoxMain({ answerId, body, username, isQuestion }) {
   return (
     <div className="content-box-main">
       <div
-        className="content-box-body"
+        className="md-body"
         dangerouslySetInnerHTML={{ __html: mdParser.render(body) }}
       ></div>
       <ContentBoxFooter username={username} isQuestion={isQuestion} />

@@ -34,7 +34,7 @@ a {
   position: relative; /* Necessary for styling external link icon */
 }
 
-.content-box-body a,
+.md-body a,
 .reply-content a {
   text-decoration: underline;
 }
@@ -76,7 +76,7 @@ html,
 body,
 #root,
 #main-content-container,
-.content-box-body {
+.md-body {
   box-sizing: border-box;
 }
 
@@ -472,12 +472,19 @@ button:disabled {
   flex-grow: 1;
 }
 
-.content-box-body {
+.md-body {
   line-height: 1.5rem;
 }
 
-.content-box-body p {
+.md-body p {
   margin-top: 0;
+}
+
+.md-body img {
+  width: 90%;
+  margin: 1.5rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: block;
 }
 
 .content-box-footer {
@@ -562,10 +569,18 @@ button:disabled {
   color: var(--color-black-600);
 }
 
-.reply-container:not(:last-child)::after {
+.reply-container::before {
   content: "";
   display: block;
   margin-top: 1rem;
+  border-bottom: 1px solid var(--color-black-150);
+  width: 100%;
+}
+
+.reply-container:last-child::after {
+  content: "";
+  display: block;
+  margin-bottom: 1rem;
   border-bottom: 1px solid var(--color-black-150);
   width: 100%;
 }
@@ -947,6 +962,11 @@ code {
   color: var(--color-black-400);
 }
 
+/* Disable external link icon for project contributors list */
+ul[aria-label="Project contributors"] a::after {
+  content: none;
+}
+
 /* Responsive */
 @media (max-width: 650px) {
   .hamburger-nav {
@@ -1016,6 +1036,10 @@ code {
 
   .footer-logo {
     display: none;
+  }
+
+  .md-body img {
+    width: 100%;
   }
 }
 

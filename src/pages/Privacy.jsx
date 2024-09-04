@@ -33,7 +33,7 @@ function Privacy() {
   return (
     <div className="info-page">
       <div
-        className="content-box-body"
+        className="md-body"
         dangerouslySetInnerHTML={{ __html: mdParser.render(md) }}
       ></div>
     </div>
