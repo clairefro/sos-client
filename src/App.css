@@ -1041,6 +1041,11 @@ ul[aria-label="Project contributors"] a::after {
   .md-body img {
     width: 100%;
   }
+
+  .vote-controls .vote-button {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 /* for large displays*/
