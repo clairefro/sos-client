@@ -21,7 +21,7 @@ In fact, [some analysis](https://observablehq.com/@ayhanfuat/the-fall-of-stack-o
 ## It's also deliberate satire
 There's irony in simulating Stack Overflow with OpenAI's models. 
 
-OpenAI's models might have been trained using data from Stack Overflow, raising concerns about copyright and attribution, as Stack Overflow content is under a Creative Commons license that requires attribution. Attribution is perhaps not even possible with LLMs since the outputs are blended from kajillions of sources, and no one really seems to know what's going on inside the black box of an LLM anyway.
+OpenAI's models might have been trained using data from Stack Overflow, raising concerns about copyright and attribution, as Stack Overflow content is under a Creative Commons license that requires attribution to the user who submitted it. Attribution is perhaps not even possible with LLMs since the outputs are blended from kajillions of sources, and no one really seems to know what's going on inside the black box of a model anyway.
 
 It's also funny to simulate Stack Overflow with AI because Stack Overflow has an explicit [policy](https://stackoverflow.com/help/gen-ai-policy) banning use of AI-generated content in contributions on their site. It makes sense for them, both legal-wise and for answer quality. Meanwhile, Stack Overflow was beginning to decline in popularity with the rise of AI.
 
@@ -44,7 +44,7 @@ AI's ability to provide instant answers to novel questions is a monument of huma
 
 Funnily enough, this technology's convenience can make us less connected with new humans. 
 
-For as convenient as automated AI solutions are, they do not invite the same appreciation for the humans who put in the time-effort to understand, tinker with, and explain solutions to your problem for free. I hope Stack Overflow Simulator will make users keenly aware of this irreplaceable human element.
+As convenient as automated AI solutions are, they do not invite the same appreciation for the humans who put in the time-effort to understand, tinker with, and explain solutions to your problem for free. I hope Stack Overflow Simulator will make users keenly aware of this irreplaceable human element.
 
 Plus there is something sweet about looking back on your naive questions on Stack Overflow from a decade ago. It lets you not only see your personal growth, but also how your "stupid question" may have helped thousands of other developers.
 
