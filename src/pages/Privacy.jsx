@@ -6,7 +6,8 @@ const md = `
 Your privacy is important. This privacy policy explains what data we collect, how we use it, and your options when using this app.
 
 ### 1. Data we collect or store
-- We do **not** store any personal information or user data.
+- We do **not** store any personal identifying information or user data.
+- We **do** collect anonymous access timestamp and browser type for analytics
 - We only monitor the **timestamp** and **cost** when questions are asked, anonymously, to help us understand app usage.
 - Anonymous aggregate usage data is stored in your local browser to display your own usage to you.
 
