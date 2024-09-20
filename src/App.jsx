@@ -13,9 +13,13 @@ import Privacy from "./pages/Privacy";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+import useAn from "./util/an/usAn";
+
 import "./App.css";
 
 function App() {
+  useAn();
+
   return (
     <BrowserRouter>
       <GlobalStateProvider>
