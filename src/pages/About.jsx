@@ -89,7 +89,7 @@ function About() {
         Created by{" "}
         <a
           target="_blank"
-          href="https://x.com/clairefroe)"
+          href="https://x.com/clairefroe"
           rel="noopener noreffer"
         >
           Claire Froelich
