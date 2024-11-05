@@ -20,7 +20,7 @@ const SplashLoader = () => {
   }, []);
 
   /** ONLY SHOW IN DEV (prod loads too fast */
-  // if (import.meta.env.MODE !== "development") return null;
+  if (import.meta.env.MODE !== "development") return null;
 
   if (shouldDismount) return null;
 
@@ -46,7 +46,7 @@ const SplashLoader = () => {
           animation: "spin 0.8s cubic-bezier(0.1, 0.7, 0.2, 1)",
           width: "50%",
         }}
-        src="/logo.png"
+        src="/logo.webp"
         alt="Stack Overflow Simulator"
         title="Loading..."
       />

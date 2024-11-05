@@ -8,14 +8,14 @@ function TopNav() {
       <div id="top-nav-floating-content">
         <Link to="/">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             id="top-nav-logo"
             alt="StackOverflow Simulator"
           />
         </Link>
         <Link to="/">
           <img
-            src="/sos-sm.png"
+            src="/sos-sm.webp"
             id="top-nav-logo-sm"
             alt="StackOverflow Simulator"
             style={{ width: "32px" }}

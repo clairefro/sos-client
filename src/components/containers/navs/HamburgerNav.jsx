@@ -31,7 +31,7 @@ const HamburgerNav = () => {
               {" "}
               <Link onClick={closeMenu} to="/">
                 <img
-                  src="/logo.png"
+                  src="/logo.webp"
                   id="hamburger-nav-logo"
                   alt="StackOverflow Simulator"
                 />
