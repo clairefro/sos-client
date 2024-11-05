@@ -5,7 +5,7 @@ const Footer = () => {
     <div id="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="/sos-sm.png" />
+          <img src="/sos-sm.webp" />
         </div>
         <div className="footer-right">
           <nav className="footer-links-grid">
