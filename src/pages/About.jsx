@@ -36,8 +36,6 @@ Maybe realizing they are better together, Stack Overflow and OpenAI [reached a d
 
 This Reddit [thread](https://www.reddit.com/r/MachineLearning/comments/1cm64jk/d_stack_overflow_partnership_with_open_ai/) presents some interesting thoughts that highlight the inter-dependence of AI and quality human contributions: 
 
-![image](https://github.com/user-attachments/assets/6652ce9c-a628-4185-98c3-4c53399dae97)
-
 Data partnerships like the one between Stack Overflow and OpenAI are becoming more common and necessary to keep with the times. Questions about fair use are valid and expected as we explore new territory in our evolved relationship with data. 
 
 In the midst of this, I thought it would be funny to use OpenAI to simulate Stack Overflow, not only since they are symbolic big players in the debate about exploiting unpaid contributors for AI, but also because developers are currently wondering how much of a role humans will have in coding in the future, if any, let alone need to ask questions about it.
