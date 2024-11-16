@@ -40,7 +40,7 @@ This Reddit [thread](https://www.reddit.com/r/MachineLearning/comments/1cm64jk/d
 
 Data partnerships like the one between Stack Overflow and OpenAI are becoming more common and necessary to keep with the times. Questions about fair use are valid and expected as we explore new territory in our evolved relationship with data. 
 
-In the midst of this, I thought it would be funny to use OpenAI to simulate Stack Overflow, not only since they symbolic big players in data farming for AI, but also because developers are currently wondering how much of a role humans will have in coding in the future, if any, let alone need to ask questions about it.
+In the midst of this, I thought it would be funny to use OpenAI to simulate Stack Overflow, not only since they are symbolic big players in the debate about exploiting unpaid contributors for AI, but also because developers are currently wondering how much of a role humans will have in coding in the future, if any, let alone need to ask questions about it.
 
 
 ## What AI can't ever replace 
