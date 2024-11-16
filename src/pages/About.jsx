@@ -1,7 +1,13 @@
 import { mdParser } from "../util/md/mdParser";
 import Contributors from "../components/info/Contributors";
 
-const md = `## An homage to Stack Overflow
+const md = `**Stack Overflow Simulator is a free, functional, open cloud museum that attempts to simulate the experience of asking for coding help on Stack Overlflow using AI.**
+
+Whether you're a newer developer who grew up in the AI age and wants to taste the lore of their forecoders, or a seasoned developer nostalgic for that unique flavor of (sometimes condescending) help, you're in the right spot.
+
+[View on Github](https://github.com/clairefro/sos-client)
+
+## An homage to Stack Overflow
 Once upon a time, when programmers got stuck they relied on epiphanies in the shower and help from other humans. 
 
 The real [Stack Overflow](https://stackoverflow.com), created in 2008 by Jeff Atwood and Joel Spolsky, is one of the world's largest communities for coders seeking help, with over 24 million questions and 34 million answers shared by users.
@@ -16,7 +22,6 @@ Nowadays that's an experience developers are having less and less, as they can g
 
 In fact, [some analysis](https://observablehq.com/@ayhanfuat/the-fall-of-stack-overflow) suggests that in the year or so since the widespread adoption of AI circa 2023, Stack Overflow traffic is down 35% and posting activity is down 50%. Will the art of ancient times be lost soon?
 
-**Stack Overflow Simulator is a free, functional, open cloud museum that attempts to simulate the old experience of asking Stack Overlflow for coding help**, whether you're a newer developer who grew up in the AI age and wants a taste of the lore of their forecoders, or a seasoned developer nostalgic for that special flavor of (sometimes condescending) help.
 
 ## It's also deliberate satire
 
