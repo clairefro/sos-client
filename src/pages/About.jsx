@@ -32,7 +32,7 @@ Stack Overflow’s content is licensed under Creative Commons, which requires pr
 
 It's also funny because Stack Overflow explicitly bans AI-generated content to protect answer quality, and sidestep the attribution issue above.
 
-Maybe realizing they are better together, Stack Overflow and OpenAI [reached a deal](https://openai.com/index/api-partnership-with-stack-overflow/) in May 2024. The deal allows OpenAI to legally use Stack Overflow's data, while giving Stack Overflow access to OpenAI’s models for their Overflow AI product. Some developers reacted by sabotaging their old answers, frustrated by changing data policies. In reality their data may have already been used, and Stack Overflow had been profiting from it long before OpenAI did. 
+Maybe realizing they are better together, Stack Overflow and OpenAI [reached a deal](https://openai.com/index/api-partnership-with-stack-overflow/) in May 2024. The deal allows OpenAI to legally use Stack Overflow's data, while giving Stack Overflow access to OpenAI’s models for their Overflow AI product. Some developers reacted by sabotaging their old answers, frustrated by changing data policies. In reality their removed data may have already been used for training, and Stack Overflow had been profiting from it long before OpenAI did. 
 
 This Reddit [thread](https://www.reddit.com/r/MachineLearning/comments/1cm64jk/d_stack_overflow_partnership_with_open_ai/) presents some interesting thoughts that highlight the inter-dependence of AI and quality human contributions: 
 
