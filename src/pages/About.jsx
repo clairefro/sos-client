@@ -23,7 +23,7 @@ In fact, [some analysis](https://observablehq.com/@ayhanfuat/the-fall-of-stack-o
 
 There's irony in simulating Stack Overflow with OpenAI, since OpenAI’s models may have been trained on Stack Overflow data, raising concerns about copyright and attribution. 
 
-Stack Overflow’s content is licensed under Creative Commons, which requires proper credit, but LLMs blend data from countless sources, making attribution nearly impossible. 
+Stack Overflow’s content is licensed under Creative Commons, which requires proper credit, but LLMs blend data from countless sources making attribution nearly impossible. 
 
 It's also funny because Stack Overflow explicitly bans AI-generated content to protect answer quality, and sidestep the attribution issue above.
 
