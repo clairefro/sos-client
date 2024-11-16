@@ -19,23 +19,23 @@ In fact, [some analysis](https://observablehq.com/@ayhanfuat/the-fall-of-stack-o
 **Stack Overflow Simulator is a free, functional, open cloud museum that attempts to simulate the old experience of asking Stack Overlflow for coding help**, whether you're a newer developer who grew up in the AI age and wants a taste of the lore of their forecoders, or a seasoned developer nostalgic for that special flavor of (sometimes condescending) help.
 
 ## It's also deliberate satire
-There's irony in simulating Stack Overflow with OpenAI's models. 
 
-OpenAI's models might have been trained using data from Stack Overflow, raising concerns about copyright and attribution, as Stack Overflow content is under a Creative Commons license that requires attribution to the user who submitted it. Attribution is perhaps not even possible with LLMs since the outputs are blended from kajillions of sources, and no one really seems to know what's going on inside the black box of a model anyway.
 
-It's also funny to simulate Stack Overflow with AI because Stack Overflow has an explicit [policy](https://stackoverflow.com/help/gen-ai-policy) banning use of AI-generated content in contributions on their site. It makes sense for them, both legal-wise and for answer quality. Meanwhile, Stack Overflow was beginning to decline in popularity with the rise of AI.
+There's irony in simulating Stack Overflow with OpenAI, since OpenAI’s models may have been trained on Stack Overflow data, raising concerns about copyright and attribution. 
 
-Maybe realizing they are better together, Stack Overflow and OpenAI [entered](https://openai.com/index/api-partnership-with-stack-overflow/) a mutually beneficial partnership in May 2024, giving OpenAI legal access to Stack Overflow's high quality question and answer data for future training, and Stack Overflow the ability to leverage OpenAI's powerful models in their [Overflow AI](https://stackoverflow.co/teams/ai/) product. 
+Stack Overflow’s content is licensed under Creative Commons, which requires proper credit, but LLMs blend data from countless sources, making attribution nearly impossible. 
 
-Some developers felt used and protested by sabotaging their old Stack Overflow answers (get some popcorn and read this Hacker News [thread](https://news.ycombinator.com/item?id=40307355)), which seems kind of futile since their data was potentially already used for training, and also ironic because Stack Overflow was already profitting off their free content before OpenAI. The frustration is understandable though when changing times lead to unforeseen data policies.
+It's also funny because Stack Overflow explicitly bans AI-generated content to protect answer quality, and sidestep the attribution issue above.
+
+Maybe realizing they are better together, Stack Overflow and OpenAI reached a deal in May 2024. The deal allows OpenAI to legally use Stack Overflow's data, while giving Stack Overflow access to OpenAI’s models for their Overflow AI product. Some developers reacted by sabotaging their old answers, frustrated by changing data policies. In reality their data may have already been used, and Stack Overflow had been profiting from it long before OpenAI did. 
 
 This Reddit [thread](https://www.reddit.com/r/MachineLearning/comments/1cm64jk/d_stack_overflow_partnership_with_open_ai/) presents some interesting thoughts that highlight the inter-dependence of AI and quality human contributions: 
 
 ![image](https://github.com/user-attachments/assets/6652ce9c-a628-4185-98c3-4c53399dae97)
 
-Data partnerships like the one between Stack Overflow and OpenAI are becoming more common and necessary to keep with the times (indeed, Stack Overflow has similar arrangements with Google's AI arm, and OpenAI with other data providers), and all these questions about fair use are valid and expected as we explore new territory in our relationship with data. 
+Data partnerships like the one between Stack Overflow and OpenAI are becoming more common and necessary to keep with the times Questions about fair use are valid and expected as we explore new territory in our evolved relationship with data. 
 
-In the midst of this, I thought it would be funny to use OpenAI to simulate Stack Overflow, not only since they are big representatives of the reliance of AI on quality data farmed from humans, but also because developers are currently wondering how much of a role humans will have in coding in the future, if any, let alone need to ask questions about it.
+In the midst of this, I thought it would be funny to use OpenAI to simulate Stack Overflow, not only since they symbolic big players in data farming for AI, but also because developers are currently wondering how much of a role humans will have in coding in the future, if any, let alone need to ask questions about it.
 
 
 ## What AI can't ever replace 
