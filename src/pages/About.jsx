@@ -23,7 +23,7 @@ Nowadays that's an experience developers are having less and less, as they can g
 In fact, [some analysis](https://observablehq.com/@ayhanfuat/the-fall-of-stack-overflow) suggests that in the year or so since the widespread adoption of AI circa 2023, Stack Overflow traffic is down 35% and posting activity is down 50%. Will the art of ancient times be lost soon?
 
 
-## It's also deliberate satire
+## ... This is also deliberate satire
 
 
 There's irony in simulating Stack Overflow with OpenAI, since OpenAI’s models may have been trained on Stack Overflow data, raising concerns about copyright and attribution. 
@@ -57,7 +57,7 @@ Plus there is something sweet about looking back on your naive questions on Stac
 _A real Stack Overflow user dashboard - in itself a museum_
 
 ## So you want to sue me
-This site is a love letter to StackOverflow. I've tried to make it clear this site is a appreciative parody and, with the help of my lawyer ChatGPT, made every effort to comply with Stack Overflow's terms and conditions.
+I've tried to make it clear this site is a appreciative parody and, with the help of my lawyer ChatGPT, made every effort to comply with Stack Overflow's terms and conditions.
 
 Contrary to damaging the brand, StackOverflow gets free advertising and direct links to their platform from this site to encourage discovery and use. 
 
@@ -72,6 +72,8 @@ You can always [run your own local version of the app](https://github.com/claire
 
 ## Contribute
 Something missing or misrepresented? Community contributions to improve the simulation by adjusting the [system prompt](https://github.com/clairefro/sos-api/blob/main/src/lib/prompts/generateThread.ts) are welcome!
+
+[View on Github](https://github.com/clairefro/sos-client)
 
 ## Attributions
 Red stamp effect in logo generated with [Textstudio Font generator](https://www.textstudio.com/)
