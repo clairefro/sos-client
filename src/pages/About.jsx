@@ -54,9 +54,9 @@ Plus there is something sweet about looking back on your naive questions on Stac
 _A real Stack Overflow user dashboard - in itself a museum_
 
 ## So you want to sue me
-I've made it clear that this site is a appreciative parody and have made every effort, with the help of my lawyer ChatGPT, to comply with Stack Overflow's terms and conditions.
+This site is a love letter to StackOverflow. I've made it clear that this site is a appreciative parody and have made every effort, with the help of my lawyer ChatGPT, to comply with Stack Overflow's terms and conditions.
 
-Contrary to damaging the Stack Overflow brand, it can be said the site is singing your praises, giving you free advertising and linking to directly to your platform. 
+Contrary to damaging the brand, StackOverflow gets free advertising and direct links to their platform from this site to encourage discovery and use. 
 
 That said, if you work at Stack Overflow and suffer from an allergy to fun, I'll sign a cease and desist agreement for [800 potatoes](https://buymeacoffee.com/clairefro) 
 
