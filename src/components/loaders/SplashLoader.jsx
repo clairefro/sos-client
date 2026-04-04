@@ -48,7 +48,7 @@ const SplashLoader = () => {
         }}
         src="/logo.webp"
         alt="Stack Overflow Simulator"
-        title="Loading..."
+        title="Summoning nerds..."
       />
     </div>
   );
