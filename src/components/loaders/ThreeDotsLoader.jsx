@@ -17,6 +17,8 @@ const LOADING_PHRASES = [
   "Warming up the downvote fingers...",
   "Enticing a senior engineer to procrastinate...",
   "Channeling the ghosts of forecoders past...",
+  "Time traveling...",
+  "R-ingTFM...",
 ];
 
 function useRotatingPhrase(intervalMs = 5000) {
