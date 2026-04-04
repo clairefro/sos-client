@@ -9,8 +9,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split `gpt-tokens` into a separate chunk for performance (5.6M)
-          "gpt-tokens": ["gpt-tokens"],
+          // Split `gpt-tokenizer` into a separate chunk for performance
+          "gpt-tokenizer": ["gpt-tokenizer"],
         },
       },
     },
